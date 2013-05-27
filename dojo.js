@@ -1,21 +1,6 @@
 $(function(){
-  var STORAGE_PREFIX = 'dojo_';
   var RESET_HOUR = 5;
   var RESET_MINUTE = 0;
-  var THRESHOLD_TIMES = 0;
-  var STORAGE = localStorage;
-
-  function getItem(key) {
-    return STORAGE.getItem(STORAGE_PREFIX + key);
-  }
-
-  function setItem(key, value) {
-    STORAGE.setItem(STORAGE_PREFIX + key, value);
-  }
-
-  function removeItem(key) {
-    STORAGE.removeItem(STORAGE_PREFIX + key);
-  }
 
   function getResetTime() {
     var resetTime = new Date();
@@ -26,20 +11,19 @@ $(function(){
     return resetTime;
   }
 
+  var storage = new Storage(true, 'dojo');
   var i, id;
   var now = new Date();
   var resetTime = getResetTime();
-  var lastTime = new Date(getItem('lastTime'));
+  var lastTime = new Date(storage.get('lastTime'));
   var visited;
 
   if (lastTime < resetTime && resetTime <= now) {
-    removeItem('visited');
+    storage.remove('visited');
   }
   else {
-    visited = getItem('visited');
-    if (!(visited === null)) {
-      visited = JSON.parse(getItem('visited'));
-
+    visited = storage.get('visited');
+    if (visited != null) { // not (null or undefined)
       for (i in visited) {
         $('#' + i).addClass('visited');
       }
@@ -50,7 +34,7 @@ $(function(){
     visited = {};
   }
 
-  setItem('lastTime', now);
+  storage.set('lastTime', now);
 
   $('a.dojos').click(function(){
     var id = $(this).attr("id");
@@ -60,6 +44,6 @@ $(function(){
       times = 0;
     }
     visited[id] = ++times;
-    setItem('visited', JSON.stringify(visited));
+    storage.set('visited', visited);
   });
 });
