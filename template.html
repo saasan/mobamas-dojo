@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>モバマス道場</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script src="dojo.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+</head>
+<body>
+  <section>
+
+{% if dojos|length > 0 -%}
+{%- for dojo in dojos %}    <a href="http://sp.pf.mbga.jp/12008305/?url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fprofile%2Fshow%2F{{ dojo.id }}" target="_blank" id="id{{ dojo.id }}" class="dojos">{{ loop.index }}. Lv.{{ dojo.lv }} {{ dojo.rank }} {{ dojo.type }} {{ dojo.leader }}</a>
+{% endfor -%}
+{%- endif %}
+  </section>
+  <footer>
+    Last Updated : {{ now|datetime }}
+  </footer>
+</body>
+</html>
