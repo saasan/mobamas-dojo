@@ -25,7 +25,8 @@ $(function(){
     visited = storage.get('visited');
     if (visited != null) { // not (null or undefined)
       for (i in visited) {
-        $('#' + i).addClass('visited');
+        $('#' + i).removeClass('btn-primary').addClass('btn-danger');
+        $('#d' + i).removeClass('btn-primary').addClass('btn-danger');
       }
     }
   }
@@ -36,9 +37,10 @@ $(function(){
 
   storage.set('lastTime', now);
 
-  $('a.dojos').click(function(){
+  $('a.dojo-link').click(function(){
     var id = $(this).attr("id");
-    $(this).addClass('visited');
+    $(this).removeClass('btn-primary').addClass('btn-danger');
+    $('#d' + id).removeClass('btn-primary').addClass('btn-danger');
     var times = visited[id];
     if (times == null) { // null or undefined
       times = 0;

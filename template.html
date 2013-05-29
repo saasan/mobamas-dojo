@@ -3,22 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <title>モバマス道場</title>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles.css">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
   <script src="storage.js"></script>
   <script src="dojo.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 </head>
 <body>
-  <section>
+  <script>
+    google_ad_client = "ca-pub-0141905477316976";
+    google_ad_slot = "7336848578";
+    google_ad_width = 320;
+    google_ad_height = 50;
+  </script>
+  <script src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
 
+  <nav>
+    <ul id="nav-tab" class="nav nav-pills">
+      <li class="active"><a href="#dojo-list" data-toggle="pill"><i class="icon-list"></i> 道場リスト</a></li>
+      <li><a href="#options" data-toggle="pill"><i class="icon-cog"></i> 設定</a></li>
+      <li><a href="#etc" data-toggle="pill">その他</a></li>
+    </ul>
+  </nav>
+
+  <div id="nav-tab-content" class="pill-content">
+    <section id="dojo-list" class="pill-pane active">
 {% if dojos|length > 0 -%}
-{%- for dojo in dojos %}    <a href="http://sp.pf.mbga.jp/12008305/?url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fprofile%2Fshow%2F{{ dojo.id }}" target="_blank" id="id{{ dojo.id }}" class="dojos">{{ loop.index }}. Lv.{{ dojo.lv }} {{ dojo.rank }} {{ dojo.type }} {{ dojo.leader }}</a>
+{%- for dojo in dojos %}
+      <div class="btn-group btn-block btn-full-width dojo">
+        <div class="dropdown-lead-container">
+          <a class="btn dropdown-lead btn-primary dojo-link" href="http://sp.pf.mbga.jp/12008305/?url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fprofile%2Fshow%2F{{ dojo.id }}" target="_blank" id="id{{ dojo.id }}"><i class="icon-user icon-white"></i> {{ loop.index }}. Lv.{{ dojo.lv }} {{ dojo.rank }} {{ dojo.type }} {{ dojo.leader }}</a>
+        </div>
+        <button class="btn dropdown-toggle btn-primary" data-toggle="dropdown" id="did{{ dojo.id }}">
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu pull-right">
+          <li><a href="#"><i class="icon-remove"></i> 非表示</a></li>
+        </ul>
+      </div>
 {% endfor -%}
 {%- endif %}
-  </section>
-  <footer>
-    Last Updated : {{ now|datetime }}
-  </footer>
+    </section>
+
+    <section id="options" class="pill-pane">
+      <div><button class="btn btn-primary" data-toggle="button">道場を別のタブで開く</button></div>
+      <div><button class="btn btn-primary" data-toggle="button">訪問済の道場を非表示にする</button></div>
+      <div>
+        道場を
+        <select id="example">
+          <option value="サンプル1">1回</option>
+          <option value="サンプル2">3回</option>
+        </select>
+        開いたら訪問済にする
+      </div>
+    </section>
+
+    <section id="etc" class="pill-pane">
+      <div class="well well-small">
+        最終更新 : {{ now|datetime }}
+      </div>
+      <div class="well well-small">
+        道場のデータは<a href="https://docs.google.com/spreadsheet/lv?key=0Aq6mv2GCHMGLdERhLURsdEZwdVFvREdiYjE4Sy1FUnc&type=view">アイマスCG 殴られ屋さん一覧</a>から取得しています。
+      </div>
+      <div class="well well-small">
+        このサイトは<a href="http://sp.pf.mbga.jp/12008305/?guid=ON&url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fprofile%2Fshow%2F59953092" target="_blank">カガミ</a>が作りました。
+      </div>
+    </section>
+  </div>
 </body>
 </html>
