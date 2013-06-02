@@ -12,17 +12,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 </head>
 <body>
-  <script>
-    google_ad_client = "ca-pub-0141905477316976";
-    google_ad_slot = "7336848578";
-    google_ad_width = 320;
-    google_ad_height = 50;
-  </script>
-  <script src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+  <div id="adsense">
+    <script>
+      google_ad_client = "ca-pub-0141905477316976";
+      google_ad_slot = "7336848578";
+      google_ad_width = 320;
+      google_ad_height = 50;
+    </script>
+    <script src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+  </div>
 
   <nav>
     <ul id="nav-tab" class="nav nav-pills">
-      <li class="active"><a href="#dojo-list" data-toggle="pill"><i class="icon-list"></i> 道場リスト</a></li>
+      <li class="active"><a href="#dojo-list" data-toggle="pill"><i class="icon-list"></i> 道場一覧</a></li>
       <li><a href="#options" data-toggle="pill"><i class="icon-cog"></i> 設定</a></li>
       <li><a href="#etc" data-toggle="pill">その他</a></li>
     </ul>
@@ -30,34 +32,44 @@
 
   <div id="nav-tab-content" class="pill-content">
     <section id="dojo-list" class="pill-pane active">
+      <div class="pagination pagination-centered">
+        <ul>
+          <li><a href="#">&laquo;</a></li>
+          <li class="active"><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">&raquo; </a></li>
+        </ul>
+      </div>
 {% if dojos|length > 0 -%}
 {%- for dojo in dojos %}
-      <div class="btn-group btn-block btn-full-width dojo">
-        <div class="dropdown-lead-container">
-          <a class="btn dropdown-lead btn-primary dojo-link" href="http://sp.pf.mbga.jp/12008305/?url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fprofile%2Fshow%2F{{ dojo.id }}" target="_blank" id="id{{ dojo.id }}"><i class="icon-user icon-white"></i> {{ loop.index }}. Lv.{{ dojo.lv }} {{ dojo.rank }} {{ dojo.type }} {{ dojo.leader }}</a>
+      <div class="btn-group btn-block btn-full-width-group dojo">
+        <div class="btn-full-width-container">
+          <a class="btn btn-full-width btn-primary dojo-link" href="http://sp.pf.mbga.jp/12008305/?url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fprofile%2Fshow%2F{{ dojo.id }}" target="_blank" id="id{{ dojo.id }}">{{ loop.index }}. {{ dojo.lv }} {{ dojo.rank }} {{ dojo.leader }}</a>
         </div>
-        <button class="btn dropdown-toggle btn-primary" data-toggle="dropdown" id="did{{ dojo.id }}">
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu pull-right">
-          <li><a href="#"><i class="icon-remove"></i> 非表示</a></li>
-        </ul>
+        <button class="btn btn-primary dojo-hide" id="did{{ dojo.id }}"><i class="icon-remove icon-white"></i></button>
       </div>
 {% endfor -%}
 {%- endif %}
     </section>
 
     <section id="options" class="pill-pane">
-      <div><button class="btn btn-primary" data-toggle="button">道場を別のタブで開く</button></div>
-      <div><button class="btn btn-primary" data-toggle="button">訪問済の道場を非表示にする</button></div>
+      <label class="checkbox">
+        <input type="checkbox" id="sameTab"> 道場を同じタブで開く
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" id="autoHide"> 訪問済の道場を表示しない
+      </label>
       <div>
-        道場を
-        <select id="example">
-          <option value="サンプル1">1回</option>
-          <option value="サンプル2">3回</option>
+        <label>道場を訪問済にする回数</label>
+        <select id="thresholdTimes">
+          <option value="1">1</option>
+          <option value="3">3</option>
         </select>
-        開いたら訪問済にする
+        回以上開いた時
       </div>
+      <button class="btn btn-primary" id="resetOptions"><i class="icon-repeat icon-white"></i> リセット</button>
     </section>
 
     <section id="etc" class="pill-pane">

@@ -11,41 +11,97 @@ $(function(){
     return resetTime;
   }
 
-  var storage = new Storage(true, 'dojo');
-  var i, id;
-  var now = new Date();
-  var resetTime = getResetTime();
-  var lastTime = new Date(storage.get('lastTime'));
-  var visited;
+  function changeButtonState(thresholdTimes, id, times) {
+    if (times > thresholdTimes) times = thresholdTimes;
 
-  if (lastTime < resetTime && resetTime <= now) {
-    storage.remove('visited');
+    var classes = {
+      1: ['btn-primary', 'btn-danger'],
+      3: ['btn-primary', 'btn-success', 'btn-warning', 'btn-danger']
+    };
+
+    $('#' + id).removeClass(classes[thresholdTimes][times - 1]).addClass(classes[thresholdTimes][times]);
+    $('#d' + id).removeClass(classes[thresholdTimes][times - 1]).addClass(classes[thresholdTimes][times]);
   }
-  else {
-    visited = storage.get('visited');
-    if (visited != null) { // not (null or undefined)
-      for (i in visited) {
-        $('#' + i).removeClass('btn-primary').addClass('btn-danger');
-        $('#d' + i).removeClass('btn-primary').addClass('btn-danger');
-      }
+
+  function onclickDojoLink(eventObject, config) {
+    var id = eventObject.attr('id');
+    config.visited[id] = (config.visited[id] == null /* null or undefined */ ? 1 : ++config.visited[id]);
+    changeButtonState(config.thresholdTimes, id, config.visited[id])
+  }
+
+  function updateButtonStateAll(config) {
+    $('a.btn-success').removeClass('btn-success').addClass('btn-primary');
+    $('button.btn-success').removeClass('btn-success').addClass('btn-primary');
+    $('a.btn-warning').removeClass('btn-warning').addClass('btn-primary');
+    $('button.btn-warning').removeClass('btn-warning').addClass('btn-primary');
+    $('a.btn-danger').removeClass('btn-danger').addClass('btn-primary');
+    $('button.btn-danger').removeClass('btn-danger').addClass('btn-primary');
+    for (id in config.visited) {
+      changeButtonState(config.thresholdTimes, id, config.visited[id])
     }
   }
 
-  if (visited == null) { // null or undefined
-    visited = {};
+  function updateUI(config) {
+    updateButtonStateAll(config);
+    if (config.sameTab) {
+      $('a[target].dojo-link').removeAttr('target');
+    }
+    else {
+      $('a:not([target]).dojo-link').attr('target', '_blank');
+    }
+    $('#sameTab').attr('checked', config.sameTab);
+    $('#autoHide').attr('checked', config.autoHide);
+    $('#thresholdTimes').val(config.thresholdTimes);
   }
 
-  storage.set('lastTime', now);
-
-  $('a.dojo-link').click(function(){
-    var id = $(this).attr("id");
-    $(this).removeClass('btn-primary').addClass('btn-danger');
-    $('#d' + id).removeClass('btn-primary').addClass('btn-danger');
-    var times = visited[id];
-    if (times == null) { // null or undefined
-      times = 0;
+  function resetConfig(config) {
+    var configDefault = {
+      visited: {},
+      sameTab: false,
+      autoHide: false,
+      thresholdTimes: 1
+    };
+    for (var key in configDefault) {
+      if (typeof config[key] === 'undefined') config[key] = configDefault[key];
     }
-    visited[id] = ++times;
-    storage.set('visited', visited);
-  });
+  }
+
+  function init() {
+    var storage = new Storage(true, 'mobamas-dojo');
+    var config = storage.get('config', {});
+    resetConfig(config);
+
+    var i, id;
+    var now = new Date();
+    var resetTime = getResetTime();
+
+    if (config.lastTime < resetTime && resetTime <= now) {
+      config.visited = {};
+    }
+
+    config.lastTime =  now;
+
+    updateUI(config);
+
+    $('#sameTab').change(function(){
+      config.sameTab = $(this).is(':checked');
+      updateUI(config);
+    });
+    $('#autoHide').change(function(){ config.autoHide = $(this).is(':checked'); });
+    $('#thresholdTimes').change(function(){
+      config.thresholdTimes = $(this).val();
+      updateButtonStateAll(config)
+    });
+    $('#resetOptions').click(function(){
+      config = {};
+      resetConfig(config);
+      updateUI(config);
+    });
+    $('a.dojo-link').click(function(){ onclickDojoLink($(this), config); });
+    $(window).on('beforeunload', function(){
+      if (!$('#noSave').is(':checked')) storage.set('config', config);
+    });
+  }
+
+  init();
 });
