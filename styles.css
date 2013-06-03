@@ -1,5 +1,6 @@
 .btn-block + .btn-block {
   margin-left: 0;
+  margin-top: 7px;
 }
 
 .btn-full-width {
@@ -70,6 +71,7 @@
 }
 
 nav,
+div.alert,
 .pill-content {
   margin:0 0.5em 0.5em 0.5em;
 }
@@ -86,4 +88,9 @@ nav,
 #adsense {
   margin: 0 auto;
   width: 320px;
+}
+
+#info,
+#alert {
+  display: none;
 }

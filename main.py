@@ -28,7 +28,7 @@ def unicode_csv_reader(utf8_csv_data, dialect=csv.excel, **kwargs):
 def format_datetime(value):
     return value.strftime('%Y-%m-%d %H:%M')
 
-url = 'https://spreadsheets.google.com/pub?key=0Aq6mv2GCHMGLdERhLURsdEZwdVFvREdiYjE4Sy1FUnc&output=csv&range=b9:h208'
+url = 'https://spreadsheets.google.com/pub?key=0Aq6mv2GCHMGLdERhLURsdEZwdVFvREdiYjE4Sy1FUnc&output=csv&range=b9:h308'
 
 try:
     result = urllib2.urlopen(url)
