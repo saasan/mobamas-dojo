@@ -91,6 +91,17 @@ div.alert,
 }
 
 #info,
-#alert {
+#alert-container {
   display: none;
+}
+
+#alert-container {
+  display: none;
+  position: fixed;
+  bottom: 7px;
+  width:100%;
+}
+
+#alert {
+  margin: 0 7px;
 }
