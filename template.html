@@ -9,7 +9,8 @@
   <script src="bootstrap/js/bootstrap.min.js"></script>
   <script src="storage.js"></script>
   <script src="config.js"></script>
-  <script src="dojo.js"></script>
+  <script src="mobamas-dojo.js"></script>
+  <script src="init.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 </head>
 <body>
@@ -63,7 +64,6 @@
     <ul id="nav-tab" class="nav nav-pills">
       <li class="active"><a href="#dojo-list" data-toggle="pill"><i class="icon-list"></i> 道場一覧</a></li>
       <li><a href="#config" data-toggle="pill" id="configTab"><i class="icon-cog"></i> 設定</a></li>
-      <li><a href="#etc" data-toggle="pill">その他</a></li>
     </ul>
   </nav>
 
@@ -112,9 +112,11 @@
       <button class="btn btn-block" type="button" id="configResetVisited">訪問回数を初期化</button>
       <button class="btn btn-block" type="button" id="configResetHide">道場の非表示設定を初期化</button>
       <button class="btn btn-block" type="button" id="configReset"><i class="icon-repeat"></i> 全ての設定を初期化</button>
-    </section>
 
-    <section id="etc" class="pill-pane">
+      <div class="well well-small">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-hashtags="imas_cg">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      </div>
       <div class="well well-small">
         最終更新 : {{ now|datetime }}
       </div>
