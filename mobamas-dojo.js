@@ -67,8 +67,13 @@ MobamasDojo.prototype = {
 
     var now = new Date();
     var resetTime = this.getResetTime();
+    var oneDayAgo = new Date(now.getTime());
+    oneDayAgo.setDate(oneDayAgo.getDate() - 1);
 
-    if (this._config.lastTime < resetTime && resetTime <= now) {
+    var moreThanOneDayAgo = this._config.lastTime < oneDayAgo;
+    var resetTimePassed = this._config.lastTime < resetTime && resetTime <= now;
+
+    if (moreThanOneDayAgo || resetTimePassed) {
       this._config.visited = {};
     }
 
