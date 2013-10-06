@@ -1,3 +1,11 @@
+#mobamas-dojo
+index.html
+lv.html
+mobamas-dojo-min.css
+mobamas-dojo-min.js
+compiler.jar
+.sass-cache
+
 #################
 ## Eclipse
 #################
@@ -213,7 +221,3 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
-
-#mobamas-dojo
-index.html
-lv.html
