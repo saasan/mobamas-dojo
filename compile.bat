@@ -6,7 +6,7 @@ java -jar compiler.jar --compilation_level SIMPLE_OPTIMIZATIONS --js storage.js 
 POPD
 
 PUSHD css
-call sass --style compressed styles.scss:mobamas-dojo-min.css
+call sass --style compressed mobamas-dojo.scss:mobamas-dojo-min.css
 POPD
 
 POPD
