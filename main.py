@@ -9,8 +9,7 @@ from datetime import datetime
 import operator
 
 APP_PATH = os.path.dirname(__file__)
-TEMPLATE_RANK = 'template_rank.html'
-TEMPLATE_LV = 'template_lv.html'
+TEMPLATE = 'template.html'
 OUTPUT_RANK = 'index.html'
 OUTPUT_RANK_PATH = os.path.join(APP_PATH, OUTPUT_RANK)
 OUTPUT_LV = 'lv.html'
@@ -79,9 +78,10 @@ for i, dojo in enumerate(dojos_rank):
 
 template_values = {
     'dojos': dojos_rank,
-    'now': datetime.now()
+    'now': datetime.now(),
+    'type': 'rank'
 }
-write_html(TEMPLATE_RANK, template_values, OUTPUT_RANK_PATH)
+write_html(TEMPLATE, template_values, OUTPUT_RANK_PATH)
 
 print '---- dojos_lv ----'
 
@@ -94,6 +94,7 @@ for i, dojo in enumerate(dojos_lv):
 
 template_values = {
     'dojos': dojos_lv,
-    'now': datetime.now()
+    'now': datetime.now(),
+    'type': 'lv'
 }
-write_html(TEMPLATE_LV, template_values, OUTPUT_LV_PATH)
+write_html(TEMPLATE, template_values, OUTPUT_LV_PATH)

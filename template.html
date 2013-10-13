@@ -111,7 +111,11 @@
 
   <section id="sectionDojoList">
     <button type="button" class="btn btn-block" id="openConfig"><i class="icon-cog"></i> 設定</button>
+{%- if type == 'rank' %}
+    <a class="btn btn-block" href="lv.html">レベル順へ変更</a>
+{%- elif type == 'lv' %}
     <a class="btn btn-block" href="./">ランク順へ変更</a>
+{%- endif %}
 {% if dojos|length > 0 -%}
 {%- for dojo in dojos %}
     <div class="dojo" id="did{{ dojo.id }}">
