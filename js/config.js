@@ -1,3 +1,5 @@
+/* jshint indent: 2, globalstrict: true */
+/* global Storage */
 'use strict';
 
 var Config = function(opt_defaultValues, opt_storageNamespace, opt_storageKey, opt_reviver) {
@@ -63,8 +65,8 @@ Config.prototype = {
 
     for (var i in sourceObject) {
       if (sourceObject[i] instanceof Date) {
-          newObject[i] = new Date();
-          newObject[i].setTime(sourceObject[i].getTime());
+        newObject[i] = new Date();
+        newObject[i].setTime(sourceObject[i].getTime());
       }
       else if (sourceObject[i] instanceof Array) {
         newObject[i] = [];

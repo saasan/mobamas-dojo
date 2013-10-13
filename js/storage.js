@@ -1,3 +1,5 @@
+/* jshint indent: 2, globalstrict: true */
+/* global localStorage, sessionStorage */
 'use strict';
 
 var Storage = function(opt_type, opt_namespace) {
@@ -5,8 +7,8 @@ var Storage = function(opt_type, opt_namespace) {
     throw new Error('Web Storage is not available');
   }
 
-  if (arguments.length == 0) opt_type = true;
-  if (arguments.length < 2 || opt_namespace == null) opt_namespace = '';
+  if (arguments.length === 0) opt_type = true;
+  if (arguments.length < 2 || typeof opt_namespace !== 'string') opt_namespace = '';
 
   this._storage = (opt_type ? localStorage : sessionStorage);
   this._namespace = opt_namespace + '_';

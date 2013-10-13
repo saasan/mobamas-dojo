@@ -1,3 +1,5 @@
+/* jshint indent: 2, globalstrict: true, jquery: true */
+/* global setTimeout, clearTimeout, Storage, Config */
 'use strict';
 
 var Toast = function() {
@@ -19,7 +21,6 @@ Toast.prototype = {
       $('#alertContainer').show();
 
       if (arguments.length > 2 && typeof opt_hide === 'number') {
-        var self = this;
         this._id = setTimeout(function(){ $('#alertContainer').hide(); self._id = null; }, opt_hide);
       }
     }
@@ -54,7 +55,8 @@ MobamasDojo.prototype = {
 
   init: function() {
     this._toast = new Toast();
-    this._config = new Config({
+    this._config = new Config(
+      {
         visited: {},
         hide: {},
         sameTab: false,
@@ -62,7 +64,11 @@ MobamasDojo.prototype = {
         visitedMax: 1,
         infoClosed: false,
         lastTime: new Date()
-    }, 'mobamas-dojo', 'config', this._dateReviver);
+      },
+      'mobamas-dojo',
+      'config',
+      this._dateReviver
+    );
     this._config.load();
 
     var now = new Date();
@@ -86,7 +92,12 @@ MobamasDojo.prototype = {
 
   onclickDojoLink: function(element) {
     var id = element.attr('id');
-    this._config.visited[id] = (this._config.visited[id] == null ? 1 : ++this._config.visited[id]);
+    if (typeof this._config.visited[id] === 'undefined') {
+      this._config.visited[id] = 1;
+    }
+    else {
+      this._config.visited[id]++;
+    }
     this._config.save();
     this.updateButtonState(id);
   },
@@ -184,10 +195,10 @@ MobamasDojo.prototype = {
     }
 
     for (id in this._config.visited) {
-      this.updateButtonState(id)
+      this.updateButtonState(id);
     }
     for (id in this._config.hide) {
-      this.updateButtonState(id)
+      this.updateButtonState(id);
     }
   },
 
