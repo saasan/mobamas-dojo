@@ -8,6 +8,7 @@ $(function(){
 
     $('a.dojo-link').click(function(){ d.onclickDojoLink($(this)); });
     $('button.hide-dojo').click(function(){ d.onclickHideDojo($(this)); });
+    $('#autoHide').click(function(){ d.onclickAutoHide($(this)); });
     $('#configOK').click(function(){ d.onclickConfigOK($(this)); });
     $('#configResetVisited').click(function(){ d.onclickConfigResetVisited($(this)); });
     $('#configResetHide').click(function(){ d.onclickConfigResetHide($(this)); });

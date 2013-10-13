@@ -61,6 +61,7 @@ MobamasDojo.prototype = {
         hide: {},
         sameTab: false,
         autoHide: false,
+        visitedHistory: 0,
         visitedMax: 1,
         infoClosed: false,
         lastTime: new Date()
@@ -109,9 +110,15 @@ MobamasDojo.prototype = {
     this.updateButtonState(id);
   },
 
+  onclickAutoHide: function(element) {
+    var display = $('#autoHide').is(':checked') ? 'block' : 'none';
+    $('#labelVisitedHistory').css('display', display);
+  },
+
   onclickConfigOK: function(element) {
     this._config.sameTab = $('#sameTab').is(':checked');
     this._config.autoHide = $('#autoHide').is(':checked');
+    this._config.visitedHistory = $('#visitedHistory').val();
     this._config.visitedMax = $('#visitedMax').val();
     this._config.save();
     this.updateUI();
@@ -203,8 +210,12 @@ MobamasDojo.prototype = {
   },
 
   updateConfigUI: function() {
+    var display = this._config.autoHide ? 'block' : 'none';
+    $('#labelVisitedHistory').css('display', display);
+
     $('#sameTab').prop('checked', this._config.sameTab);
     $('#autoHide').prop('checked', this._config.autoHide);
+    $('#visitedHistory').val(this._config.visitedHistory);
     $('#visitedMax').val(this._config.visitedMax);
   },
 
