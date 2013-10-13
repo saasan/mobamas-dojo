@@ -8,6 +8,7 @@ import codecs
 from datetime import datetime
 import operator
 
+DEBUG = True
 APP_PATH = os.path.dirname(__file__)
 TEMPLATE = 'template.html'
 OUTPUT_RANK = 'index.html'
@@ -79,7 +80,8 @@ for i, dojo in enumerate(dojos_rank):
 template_values = {
     'dojos': dojos_rank,
     'now': datetime.now(),
-    'type': 'rank'
+    'type': 'rank',
+    'debug': DEBUG
 }
 write_html(TEMPLATE, template_values, OUTPUT_RANK_PATH)
 
@@ -95,6 +97,7 @@ for i, dojo in enumerate(dojos_lv):
 template_values = {
     'dojos': dojos_lv,
     'now': datetime.now(),
-    'type': 'lv'
+    'type': 'lv',
+    'debug': DEBUG
 }
 write_html(TEMPLATE, template_values, OUTPUT_LV_PATH)
