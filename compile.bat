@@ -10,5 +10,3 @@ call sass --style compressed mobamas-dojo.scss:mobamas-dojo-min.css
 POPD
 
 POPD
-
-PAUSE
