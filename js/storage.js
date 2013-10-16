@@ -29,6 +29,7 @@ Storage.prototype = {
    * @param {string} key 値を取得するキー名
    * @param {object} [opt_defaultValue] デフォルト値
    * @param {function} [opt_reviver] 値の特殊な変換を行う関数
+   * @return {object} 値
    */
   get: function(key, opt_defaultValue, opt_reviver) {
     if (arguments.length == 1) opt_defaultValue = null;
@@ -69,6 +70,7 @@ Storage.prototype = {
    * getではJSON.parseを使用してJSONから元の型へ戻されるが、
    * getRawDataではJSONのまま取得する
    * @param {string} key 生データを取得するキー名
+   * @return {string} 生データ
    */
   getRawData: function(key) {
     return this._storage.getItem(this._namespace + key);

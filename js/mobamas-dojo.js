@@ -2,12 +2,24 @@
 /* global setTimeout, clearTimeout, Storage, Config */
 'use strict';
 
+/**
+ * トースト
+ * @constructor
+ */
 var Toast = function() {
 };
 
 Toast.prototype = {
   _id: null,
 
+  /**
+   * トーストを表示する
+   * @param {string} message 表示するメッセージ
+   * @param {string} [opt_class] トーストで使用するHTMLのクラス
+   * @param {number} [opt_hide] 指定された時間が経過したら自動で閉じる
+   *                            単位はミリ秒
+   *                            指定がなければ自動で閉じない
+   */
   show: function(message, opt_class, opt_hide) {
     var self = this;
 
@@ -32,6 +44,10 @@ Toast.prototype = {
   }
 };
 
+/**
+ * モバマス道場
+ * @constructor
+ */
 var MobamasDojo = function() {
 };
 
@@ -53,6 +69,9 @@ MobamasDojo.prototype = {
     return value;
   },
 
+  /**
+   * 初期化
+   */
   init: function() {
     this._toast = new Toast();
     this._config = new Config(
@@ -91,6 +110,9 @@ MobamasDojo.prototype = {
     this._config.save();
   },
 
+  /**
+   * 道場のリンク
+   */
   onclickDojoLink: function(element) {
     var id = element.attr('id');
     if (typeof this._config.visited[id] === 'undefined') {
@@ -103,6 +125,9 @@ MobamasDojo.prototype = {
     this.updateButtonState(id);
   },
 
+  /**
+   * 道場の非表示ボタン
+   */
   onclickHideDojo: function(element) {
     var id = element.data('id');
     this._config.hide[id] = true;
@@ -110,11 +135,17 @@ MobamasDojo.prototype = {
     this.updateButtonState(id);
   },
 
+  /**
+   * 訪問済の道場を表示しない
+   */
   onclickAutoHide: function(element) {
     var display = $('#autoHide').is(':checked') ? 'block' : 'none';
     $('#labelVisitedHistory').css('display', display);
   },
 
+  /**
+   * 設定を保存
+   */
   onclickConfigOK: function(element) {
     this._config.sameTab = $('#sameTab').is(':checked');
     this._config.autoHide = $('#autoHide').is(':checked');
@@ -126,6 +157,9 @@ MobamasDojo.prototype = {
     this._toast.show('設定を保存しました。', 'alert-success', this._TOAST_TIME);
   },
 
+  /**
+   * 訪問回数を初期化
+   */
   onclickConfigResetVisited: function(element) {
     this._config.visited = {};
     this._config.save();
@@ -133,6 +167,9 @@ MobamasDojo.prototype = {
     this._toast.show('訪問回数を初期化しました。', 'alert-success', this._TOAST_TIME);
   },
 
+  /**
+   * 道場の非表示設定を初期化
+   */
   onclickConfigResetHide: function(element) {
     this._config.hide = {};
     this._config.save();
@@ -140,6 +177,9 @@ MobamasDojo.prototype = {
     this._toast.show('道場の非表示設定を初期化しました。', 'alert-success', this._TOAST_TIME);
   },
 
+  /**
+   * 全ての設定を初期化
+   */
   onclickConfigReset: function(element) {
     this._config.reset();
     this._config.save();
@@ -147,21 +187,33 @@ MobamasDojo.prototype = {
     this._toast.show('全ての設定を初期化しました。', 'alert-success', this._TOAST_TIME);
   },
 
+  /**
+   * インフォメーションの×ボタン
+   */
   onclickCloseInfo: function() {
     this._config.infoClosed = true;
     this._config.save();
     $('#info').hide();
   },
 
+  /**
+   * アラートの×ボタン
+   */
   onclickCloseAlert: function() {
     $('#alertContainer').hide();
   },
 
+  /**
+   * 設定
+   */
   onclickOpenConfig: function() {
     this.updateConfigUI();
     $('#sectionConfig').show();
   },
 
+  /**
+   * データ入力
+   */
   onclickDataInput: function() {
     try {
       this._config.setRawData($('#dataOutput').val());
@@ -175,6 +227,10 @@ MobamasDojo.prototype = {
     this._toast.show('データを入力しました。', 'alert-success', this._TOAST_TIME);
   },
 
+  /**
+   * 今日のリセット時間を取得する
+   * @return {date} リセット時間
+   */
   getResetTime: function() {
     var resetTime = new Date();
     resetTime.setHours(this._RESET_HOUR);
@@ -184,6 +240,9 @@ MobamasDojo.prototype = {
     return resetTime;
   },
 
+  /**
+   * 道場ボタンの状態を更新する
+   */
   updateButtonState: function(id) {
     var m = this._config.visitedMax;
     var c = this._config.visited[id];
@@ -206,6 +265,9 @@ MobamasDojo.prototype = {
     }
   },
 
+  /**
+   * 全ての道場ボタンの状態を更新する
+   */
   updateButtonStateAll: function() {
     var i, id, classes = ['btn-success', 'btn-warning', 'btn-danger'];
 
@@ -222,6 +284,9 @@ MobamasDojo.prototype = {
     }
   },
 
+  /**
+   * 設定のUIを更新する
+   */
   updateConfigUI: function() {
     var display = this._config.autoHide ? 'block' : 'none';
     $('#labelVisitedHistory').css('display', display);
@@ -234,6 +299,9 @@ MobamasDojo.prototype = {
     $('#dataOutput').val(this._config.getRawData());
   },
 
+  /**
+   * 全てのUIを更新する
+   */
   updateUI: function() {
     $('div.dojo').show();
     this.updateButtonStateAll();
