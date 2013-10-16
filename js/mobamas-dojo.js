@@ -167,7 +167,7 @@ MobamasDojo.prototype = {
       this._config.setRawData($('#dataOutput').val());
     }
     catch (e) {
-      this.outputErrorMessage(e.message);
+      this._toast.show(e.message, 'alert-error');
       return;
     }
     this._config.load();
@@ -253,11 +253,5 @@ MobamasDojo.prototype = {
     else {
       $('#info').show();
     }
-  },
-
-  outputErrorMessage: function(message) {
-    $('#alertText').text(message);
-    $('#alert').removeClass('alert-success alert-danger alert-info').addClass('alert-error');
-    $('#alertContainer').show();
   }
 };
