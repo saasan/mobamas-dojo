@@ -18,6 +18,7 @@ $(function(){
     $('#openConfig').click(function(){ d.onclickOpenConfig(); });
     $('#closeConfig').click(function(){ $('#sectionConfig').hide(); });
     $('#configCancel').click(function(){ $('#sectionConfig').hide(); });
+    $('#dataInput').click(function(){ d.onclickDataInput(); });
 
     d.init();
   }

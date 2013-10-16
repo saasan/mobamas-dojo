@@ -162,6 +162,19 @@ MobamasDojo.prototype = {
     $('#sectionConfig').show();
   },
 
+  onclickDataInput: function() {
+    try {
+      this._config.setRawData($('#dataOutput').val());
+    }
+    catch (e) {
+      this.outputErrorMessage(e.message);
+      return;
+    }
+    this._config.load();
+    this.updateUI();
+    this._toast.show('データを入力しました。', 'alert-success', this._TOAST_TIME);
+  },
+
   getResetTime: function() {
     var resetTime = new Date();
     resetTime.setHours(this._RESET_HOUR);
@@ -217,6 +230,8 @@ MobamasDojo.prototype = {
     $('#autoHide').prop('checked', this._config.autoHide);
     $('#visitedHistory').val(this._config.visitedHistory);
     $('#visitedMax').val(this._config.visitedMax);
+    
+    $('#dataOutput').val(this._config.getRawData());
   },
 
   updateUI: function() {
@@ -238,5 +253,11 @@ MobamasDojo.prototype = {
     else {
       $('#info').show();
     }
+  },
+
+  outputErrorMessage: function(message) {
+    $('#alertText').text(message);
+    $('#alert').removeClass('alert-success alert-danger alert-info').addClass('alert-error');
+    $('#alertContainer').show();
   }
 };

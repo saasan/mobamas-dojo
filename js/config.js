@@ -108,5 +108,13 @@ Config.prototype = {
     var newValues = this._storage.get(this.storageKey, {}, this._reviver);
     if (opt_clear) this.clear();
     this._importValues(newValues);
+  },
+
+  getRawData: function() {
+    return this._storage.getRawData(this.storageKey);
+  },
+
+  setRawData: function(value) {
+    this._storage.setRawData(this.storageKey, value);
   }
 };

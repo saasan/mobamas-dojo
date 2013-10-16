@@ -40,5 +40,14 @@ Storage.prototype = {
 
   remove: function(key) {
     this._storage.removeItem(this._namespace + key);
+  },
+
+  getRawData: function(key) {
+    return this._storage.getItem(this._namespace + key);
+  },
+
+  setRawData: function(key, value) {
+    JSON.parse(value);
+    this._storage.setItem(this._namespace + key, value);
   }
 };
