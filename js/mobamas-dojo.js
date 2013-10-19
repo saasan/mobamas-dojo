@@ -79,9 +79,10 @@ MobamasDojo.prototype = {
         visited: {},
         hide: {},
         sameTab: false,
-        autoHide: false,
-        visitedHistory: 0,
         visitedMax: 1,
+        autoHide: false,
+        keepLastVisited: false,
+        lastVisited: null,
         infoClosed: false,
         lastTime: new Date()
       },
@@ -115,12 +116,20 @@ MobamasDojo.prototype = {
    */
   onclickDojoLink: function(element) {
     var id = element.attr('id');
+    var lastVisited = this._config.lastVisited;
+
     if (typeof this._config.visited[id] === 'undefined') {
       this._config.visited[id] = 1;
     }
     else {
       this._config.visited[id]++;
     }
+    this._config.lastVisited = id;
+
+    if (this._config.keepLastVisited && lastVisited !== null && lastVisited !== id) {
+      this.updateButtonState(lastVisited);
+    }
+
     this._config.save();
     this.updateButtonState(id);
   },
@@ -136,21 +145,13 @@ MobamasDojo.prototype = {
   },
 
   /**
-   * 訪問済の道場を表示しない
-   */
-  onclickAutoHide: function(element) {
-    var display = $('#autoHide').is(':checked') ? 'block' : 'none';
-    $('#labelVisitedHistory').css('display', display);
-  },
-
-  /**
    * 設定を保存
    */
   onclickConfigOK: function(element) {
     this._config.sameTab = $('#sameTab').is(':checked');
-    this._config.autoHide = $('#autoHide').is(':checked');
-    this._config.visitedHistory = $('#visitedHistory').val();
     this._config.visitedMax = $('#visitedMax').val();
+    this._config.autoHide = $('#autoHide').is(':checked');
+    this._config.keepLastVisited = $('#keepLastVisited').is(':checked');
     this._config.save();
     this.updateUI();
     $('#sectionConfig').hide();
@@ -242,6 +243,7 @@ MobamasDojo.prototype = {
 
   /**
    * 道場ボタンの状態を更新する
+   * @param {string} id ボタンのid
    */
   updateButtonState: function(id) {
     var m = this._config.visitedMax;
@@ -255,7 +257,9 @@ MobamasDojo.prototype = {
       c = m;
     }
 
-    if (this._config.hide[id] || (this._config.autoHide && c >= m)) {
+    var isHide = this._config.hide[id] || (this._config.autoHide && c >= m);
+    var isKeep = this._config.keepLastVisited && this._config.lastVisited === id;
+    if (isHide && !isKeep) {
       $('#d' + id).hide();
     }
     else {
@@ -288,13 +292,10 @@ MobamasDojo.prototype = {
    * 設定のUIを更新する
    */
   updateConfigUI: function() {
-    var display = this._config.autoHide ? 'block' : 'none';
-    $('#labelVisitedHistory').css('display', display);
-
     $('#sameTab').prop('checked', this._config.sameTab);
-    $('#autoHide').prop('checked', this._config.autoHide);
-    $('#visitedHistory').val(this._config.visitedHistory);
     $('#visitedMax').val(this._config.visitedMax);
+    $('#autoHide').prop('checked', this._config.autoHide);
+    $('#keepLastVisited').prop('checked', this._config.keepLastVisited);
     
     $('#dataOutput').val(this._config.getRawData());
   },

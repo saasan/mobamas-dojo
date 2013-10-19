@@ -80,26 +80,17 @@
           <input type="checkbox" id="sameTab"> 道場を同じタブで開く
         </label>
         <label>
-          <input type="checkbox" id="autoHide"> 訪問済の道場を表示しない
-        </label>
-        <label id="labelVisitedHistory">
-          ┗ 訪問済の道場を
-          <select class="input-mini" id="visitedHistory">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-          個残す
-        </label>
-        <label>
           <select class="input-mini" id="visitedMax">
             <option value="1">1</option>
             <option value="3">3</option>
           </select>
           回以上訪問した時、道場を訪問済とする
+        </label>
+        <label>
+          <input type="checkbox" id="autoHide"> 訪問済の道場を表示しない
+        </label>
+        <label>
+          ┗ <input type="checkbox" id="keepLastVisited"> 最後に訪問した道場を残す
         </label>
         <button type="button" class="btn btn-block btn-primary" id="configOK"><i class="icon-ok"></i> 設定を保存</button>
         <button type="button" class="btn btn-block" id="configResetVisited">訪問回数を初期化</button>
