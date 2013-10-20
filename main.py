@@ -7,8 +7,8 @@ import jinja2
 import codecs
 from datetime import datetime
 import operator
+import argparse
 
-DEBUG = True
 APP_PATH = os.path.dirname(__file__)
 TEMPLATE = 'template.html'
 OUTPUT_RANK = 'index.html'
@@ -50,6 +50,10 @@ def write_html(template, template_values, output_path):
     finally:
         f.close()
 
+parser = argparse.ArgumentParser(description='Generate Mobamas Dojo HTML.')
+parser.add_argument('-d', '--debug', action='store_true', help='flag of debug mode')
+args = parser.parse_args()
+
 url = 'https://spreadsheets.google.com/pub?key=0Aq6mv2GCHMGLdERhLURsdEZwdVFvREdiYjE4Sy1FUnc&output=csv'
 
 print '---- urlopen ----'
@@ -81,7 +85,7 @@ template_values = {
     'dojos': dojos_rank,
     'now': datetime.now(),
     'type': 'rank',
-    'debug': DEBUG
+    'debug': args.debug
 }
 write_html(TEMPLATE, template_values, OUTPUT_RANK_PATH)
 
@@ -98,6 +102,6 @@ template_values = {
     'dojos': dojos_lv,
     'now': datetime.now(),
     'type': 'lv',
-    'debug': DEBUG
+    'debug': args.debug
 }
 write_html(TEMPLATE, template_values, OUTPUT_LV_PATH)
