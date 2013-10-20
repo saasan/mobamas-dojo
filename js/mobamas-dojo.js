@@ -163,6 +163,7 @@ MobamasDojo.prototype = {
    */
   onclickConfigResetVisited: function(element) {
     this._config.visited = {};
+    this._config.lastVisited = null;
     this._config.save();
     this.updateUI();
     this._toast.show('訪問回数を初期化しました。', 'alert-success', this._TOAST_TIME);
@@ -257,9 +258,9 @@ MobamasDojo.prototype = {
       c = m;
     }
 
-    var isHide = this._config.hide[id] || (this._config.autoHide && c >= m);
-    var isKeep = this._config.keepLastVisited && this._config.lastVisited === id;
-    if (isHide && !isKeep) {
+    var autoHide = this._config.autoHide && c >= m;
+    var keep = this._config.autoHide && this._config.keepLastVisited && this._config.lastVisited === id;
+    if (this._config.hide[id] || (autoHide && !keep)) {
       $('#d' + id).hide();
     }
     else {
