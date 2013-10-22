@@ -226,6 +226,7 @@ MobamasDojo.prototype = {
     }
     this._config.load();
     this.updateUI();
+    $('#sectionConfig').hide();
     this._toast.show('データを入力しました。', 'alert-success', this._TOAST_TIME);
   },
 
