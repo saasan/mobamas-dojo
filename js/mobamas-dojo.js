@@ -1,5 +1,5 @@
 /* jshint indent: 2, globalstrict: true, jquery: true */
-/* global setTimeout, clearTimeout, Storage, Config */
+/* global setTimeout, clearTimeout, Storage, Config, Birthday */
 'use strict';
 
 /**
@@ -361,8 +361,26 @@ MobamasDojo.prototype = {
     }
 
     this.updateConfigUI();
+    this.updateBirthday();
 
     $('#info').css('display', this._config.infoClosed ? 'none' : 'block');
     $('#birthday').css('display', this._config.hideBirthday ? 'none' : 'block');
+  },
+
+  /**
+   * 誕生日を更新する
+   */
+  updateBirthday: function() {
+    var birthday = new Birthday();
+
+    var today = birthday.getToday();
+    if (today === null) {
+      $('#birthdayToday').html('本日誕生日のアイドルはいません');
+    }
+    else {
+      $('#birthdayToday').html('<a href="http://sp.pf.mbga.jp/12008305/?guid=ON&url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fbirthday" target="_blank">本日誕生日のアイドル：' + today + '</a>');
+    }
+    
+    $('#birthdayNext').html('次の誕生日は' + birthday.getNext());
   }
 };

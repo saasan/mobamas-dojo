@@ -9,6 +9,7 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.js"></script>
   <script src="js/storage.js"></script>
   <script src="js/config.js"></script>
+  <script src="js/birthday.js"></script>
   <script src="js/mobamas-dojo.js"></script>
   <script src="js/init.js"></script>
 {%- else %}
@@ -72,8 +73,8 @@
   <section id="birthday" class="alert alert-block">
     <button type="button" class="close" id="closeBirthday"><i class="icon-remove"></i></button>
     <h4>誕生日</h4>
-    <p><a href="http://sp.pf.mbga.jp/12008305/" target="_blank">今日：だれだれ</a></p>
-    <p><a href="http://sp.pf.mbga.jp/12008305/" target="_blank">11/4：だれだれ</a></p>
+    <p id="birthdayToday"></p>
+    <p id="birthdayNext"></p>
   </section>
 
   <section id="sectionConfig">
