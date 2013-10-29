@@ -73,6 +73,8 @@ MobamasDojo.prototype = {
    * 初期化
    */
   init: function() {
+    var now = new Date();
+
     this._toast = new Toast();
     this._config = new Config(
       {
@@ -85,7 +87,7 @@ MobamasDojo.prototype = {
         lastVisited: null,
         hideBirthday: false,
         infoClosed: false,
-        lastTime: new Date()
+        lastTime: now
       },
       'mobamas-dojo',
       'config',
@@ -93,15 +95,7 @@ MobamasDojo.prototype = {
     );
     this._config.load();
 
-    var now = new Date();
-    var resetTime = this.getResetTime();
-    var oneDayAgo = new Date(now.getTime());
-    oneDayAgo.setDate(oneDayAgo.getDate() - 1);
-
-    var moreThanOneDayAgo = this._config.lastTime < oneDayAgo;
-    var resetTimePassed = this._config.lastTime < resetTime && resetTime <= now;
-
-    if (moreThanOneDayAgo || resetTimePassed) {
+    if (this.needReset()) {
       this.resetVisited();
     }
 
@@ -266,6 +260,22 @@ MobamasDojo.prototype = {
     resetTime.setSeconds(0);
     resetTime.setMilliseconds(0);
     return resetTime;
+  },
+
+  /**
+   * 訪問回数のリセットが必要か確認する
+   * @return {boolean} 必要性の有無
+   */
+  needReset: function() {
+    var now = new Date();
+    var resetTime = this.getResetTime();
+    var oneDayAgo = new Date(now.getTime());
+    oneDayAgo.setDate(oneDayAgo.getDate() - 1);
+
+    var moreThanOneDayAgo = this._config.lastTime < oneDayAgo;
+    var resetTimePassed = this._config.lastTime < resetTime && resetTime <= now;
+
+    return (moreThanOneDayAgo || resetTimePassed);
   },
 
   /**
