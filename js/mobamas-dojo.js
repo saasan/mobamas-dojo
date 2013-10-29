@@ -83,6 +83,7 @@ MobamasDojo.prototype = {
         autoHide: false,
         keepLastVisited: false,
         lastVisited: null,
+        hideBirthday: false,
         infoClosed: false,
         lastTime: new Date()
       },
@@ -152,6 +153,7 @@ MobamasDojo.prototype = {
     this._config.visitedMax = $('#visitedMax').val();
     this._config.autoHide = $('#autoHide').is(':checked');
     this._config.keepLastVisited = $('#keepLastVisited').is(':checked');
+    this._config.hideBirthday = $('#hideBirthday').is(':checked');
     this._config.save();
     this.updateUI();
     $('#sectionConfig').hide();
@@ -196,6 +198,15 @@ MobamasDojo.prototype = {
     this._config.infoClosed = true;
     this._config.save();
     $('#info').hide();
+  },
+
+  /**
+   * 誕生日の×ボタン
+   */
+  onclickCloseBirthday: function() {
+    this._config.hideBirthday = true;
+    this._config.save();
+    $('#birthday').hide();
   },
 
   /**
@@ -320,6 +331,7 @@ MobamasDojo.prototype = {
     $('#visitedMax').val(this._config.visitedMax);
     $('#autoHide').prop('checked', this._config.autoHide);
     $('#keepLastVisited').prop('checked', this._config.keepLastVisited);
+    $('#hideBirthday').prop('checked', this._config.hideBirthday);
     
     $('#dataOutput').val(this._config.getRawData());
   },
@@ -340,11 +352,7 @@ MobamasDojo.prototype = {
 
     this.updateConfigUI();
 
-    if (this._config.infoClosed) {
-      $('#info').hide();
-    }
-    else {
-      $('#info').show();
-    }
+    $('#info').css('display', this._config.infoClosed ? 'none' : 'block');
+    $('#birthday').css('display', this._config.hideBirthday ? 'none' : 'block');
   }
 };
