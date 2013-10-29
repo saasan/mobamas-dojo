@@ -224,6 +224,13 @@ MobamasDojo.prototype = {
       return;
     }
 
+    // JSONの前後に不要な文字列があれば削除
+    var f = data.indexOf('{');
+    var l = data.lastIndexOf('}');
+    if (f >= 0 && l >= 0) {
+      data = data.substring(f, l + 1);
+    }
+    
     try {
       this._config.setRawData(data);
     }
