@@ -407,7 +407,10 @@ MobamasDojo.prototype = {
         { asin: 'B00FPGY5CI', img: 'http://ecx.images-amazon.com/images/I/814qJ9fFRnL._SX318_CR0,86,318,98_.jpg' },
         { asin: 'B00ESECI40', img: 'http://ecx.images-amazon.com/images/I/610%2BEdxKQrL._PU35_CR80,130,318,98_.jpg' },
         { asin: 'B00E59NQ8U', img: 'http://ecx.images-amazon.com/images/I/61MZCw0Lw%2BL._SX450_CR80,30,318,98_.jpg' },
-        { asin: 'B00DGIQD40', img: 'http://ecx.images-amazon.com/images/I/51ZwOLjBRHL._PU90_CR19,22,451,139_SX318_.jpg' }
+        { asin: 'B00DGIQD40', img: 'http://ecx.images-amazon.com/images/I/51ZwOLjBRHL._PU90_CR19,22,451,139_SX318_.jpg' },
+        { asin: '4048919245', img: 'http://ecx.images-amazon.com/images/I/61QGkhmsBuL._SX318_CR0,100,318,98_.jpg' },
+        { asin: '4758007772', img: 'http://ecx.images-amazon.com/images/I/51dUay4NeoL._SX318_CR0,30,318,98_.jpg' },
+        { asin: '4758007667', img: 'http://ecx.images-amazon.com/images/I/51M0EZG0NdL._PU90_SX320_CR0,30,318,98.jpg' }
       ];
     
     var n = Math.floor(Math.random() * data.length);
