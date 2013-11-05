@@ -25,7 +25,7 @@ $(function(){
   }
   catch (e) {
     $('#alertText').text(e.message);
-    $('#alert').removeClass('alert-success alert-danger alert-info').addClass('alert-error');
+    $('#alert').removeClass('success').addClass('error');
     $('#alertContainer').show();
   }
 });

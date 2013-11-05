@@ -5,31 +5,23 @@
 
 $default-margin: 7px;
 
-$body-bg:               #fff !default;
-$text-color:            #333 !default;
-$link-color:            #08c !default;
+$body-bg:       #fff;
+$text-color:    #333;
+$link-color:    #08c;
 
-$brand-default-color:   #333 !default;
-$brand-default-bg:      #f5f5f5 !default;
-$brand-primary-color:   #fff !default;
-$brand-primary-bg:      #0078e7 !default;
-$brand-success-color:   #fff !default;
-$brand-success-bg:      #00d46b !default;
-$brand-warning-color:   #fff !default;
-$brand-warning-bg:      #ffc100 !default;
-$brand-danger-color:    #fff !default;
-$brand-danger-bg:       #e70048 !default;
-$brand-alert-color:     #555 !default;
-$brand-alert-bg:        #fcf8e3 !default;
-$brand-alert-border:    #fbeed5 !default;
-
-/*
- * Google Colors
- * $brand-primary-bg:      #4285f4 !default;
- * $brand-success-bg:      #0f9d58 !default;
- * $brand-warning-bg:      #f4b400 !default;
- * $brand-danger-bg:       #db4437 !default;
-*/
+$default-color: #333;
+$default-bg:    #f5f5f5;
+$primary-color: #fff;
+$primary-bg:    #0078e7;
+$success-color: #fff;
+$success-bg:    #00d46b;
+$warning-color: #fff;
+$warning-bg:    #ffc100;
+$error-color:   #fff;
+$error-bg:      #e70048;
+$alert-color:   #555;
+$alert-bg:      #fcf8e3;
+$alert-border:  #fbeed5;
 
 h3 {
   margin: 0;
@@ -38,9 +30,9 @@ h3 {
   font-weight: bold;
 }
 
-a {
-  color: $link-color;
-  text-decoration: none;
+section {
+  margin: $default-margin;
+  margin-top: 0;
 }
 
 p {
@@ -48,9 +40,9 @@ p {
   margin-top: $default-margin;
 }
 
-section {
-  margin: $default-margin;
-  margin-top: 0;
+a {
+  color: $link-color;
+  text-decoration: none;
 }
 
 img {
@@ -62,12 +54,12 @@ img {
   padding: 4px 12px;
   margin-bottom: 0;
   line-height: 30px;
-  color: $brand-default-color;
+  color: $default-color;
   text-align: center;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   vertical-align: middle;
   cursor: pointer;
-  background-color: $brand-default-bg;
+  background-color: $default-bg;
   border: 1px solid #ccc;
   border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
 
@@ -81,35 +73,33 @@ img {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
-}
 
-.btn-primary,
-.btn-success,
-.btn-warning,
-.btn-danger,
-.btn-error {
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-}
+  &.primary,
+  &.success,
+  &.warning,
+  &.error {
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  }
 
-.btn-primary {
-  color: $brand-primary-color;
-  background-color: $brand-primary-bg;
-}
+  &.primary {
+    color: $primary-color;
+    background-color: $primary-bg;
+  }
 
-.btn-success {
-  color: $brand-success-color;
-  background-color: $brand-success-bg;
-}
+  &.success {
+    color: $success-color;
+    background-color: $success-bg;
+  }
 
-.btn-warning {
-  color: $brand-warning-color;
-  background-color: $brand-warning-bg;
-}
+  &.warning {
+    color: $warning-color;
+    background-color: $warning-bg;
+  }
 
-.btn-danger,
-.btn-error {
-  color: $brand-danger-color;
-  background-color: $brand-danger-bg;
+  &.error {
+    color: $error-color;
+    background-color: $error-bg;
+  }
 }
 
 .close {
@@ -129,23 +119,17 @@ img {
 .alert {
   margin-top: $default-margin;
   padding: $default-margin * 2;
-  color: $brand-alert-color;
+  color: $alert-color;
   text-shadow: 0 1px 0 rgba(255,255,255,0.5);
-  background-color: $brand-alert-bg;
-  border: 1px solid $brand-alert-border;
-}
+  background-color: $alert-bg;
+  border: 1px solid $alert-border;
 
-.alert-danger,
-.alert-error {
-  color: $brand-danger-color;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: $brand-danger-bg;
-  border-color: $brand-danger-bg;
-  font-weight: bold;
-
-  .close {
-    color: $brand-danger-color;
-    opacity: 1;
+  &.error {
+    color: $error-color;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: $error-bg;
+    border-color: $error-bg;
+    font-weight: bold;
   }
 }
 
@@ -180,7 +164,7 @@ img {
 
   a {
     img {
-      border: 1px solid $brand-default-color;
+      border: 1px solid $default-color;
     }
 
     &:after {

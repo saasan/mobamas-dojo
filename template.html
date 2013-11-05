@@ -95,7 +95,7 @@
         <label>
           <input type="checkbox" id="hideBirthday"> 誕生日を表示しない
         </label>
-        <button type="button" class="btn block btn-primary" id="configOK"><i class="icon-ok"></i> 設定を保存</button>
+        <button type="button" class="btn block primary" id="configOK"><i class="icon-ok"></i> 設定を保存</button>
         <button type="button" class="btn block" id="configResetVisited">訪問回数を初期化</button>
         <button type="button" class="btn block" id="configResetHide">道場の非表示設定を初期化</button>
         <button type="button" class="btn block" id="configReset"><i class="icon-repeat"></i> 全ての設定を初期化</button>
@@ -144,8 +144,8 @@
 {% if dojos|length > 0 -%}
 {%- for dojo in dojos %}
     <div class="dojo" id="did{{ dojo.id }}">
-      <a class="btn btn-primary dojo-link" href="http://sp.pf.mbga.jp/12008305/?url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fprofile%2Fshow%2F{{ dojo.id }}" target="_blank" id="id{{ dojo.id }}">{{ loop.index }}. {{ dojo.lv }} {{ dojo.rank }} {{ dojo.leader }}</a>
-      <button type="button" class="btn btn-primary hide-dojo" id="hid{{ dojo.id }}" data-id="id{{ dojo.id }}"><i class="icon-remove"></i></button>
+      <a class="btn primary dojo-link" href="http://sp.pf.mbga.jp/12008305/?url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fprofile%2Fshow%2F{{ dojo.id }}" target="_blank" id="id{{ dojo.id }}">{{ loop.index }}. {{ dojo.lv }} {{ dojo.rank }} {{ dojo.leader }}</a>
+      <button type="button" class="btn primary hide-dojo" id="hid{{ dojo.id }}" data-id="id{{ dojo.id }}"><i class="icon-remove"></i></button>
     </div>
 {% endfor -%}
 {%- endif %}

@@ -31,7 +31,7 @@ var MobamasDojo;
       if ($('#alertContainer').is(':hidden') || this._id === null) {
         $('#alertText').text(message);
         var alert = $('#alert');
-        alert.removeClass('alert-success alert-error alert-danger alert-info');
+        alert.removeClass('success error');
         if (arguments.length > 1) {
           alert.addClass(opt_class);
         }
@@ -157,7 +157,7 @@ var MobamasDojo;
       this._config.save();
       this.updateUI();
       $('#config').hide();
-      this._toast.show('設定を保存しました。', 'alert-success', this._TOAST_TIME);
+      this._toast.show('設定を保存しました。', 'success', this._TOAST_TIME);
     },
 
     /**
@@ -168,7 +168,7 @@ var MobamasDojo;
 
       this._config.save();
       this.updateUI();
-      this._toast.show('訪問回数を初期化しました。', 'alert-success', this._TOAST_TIME);
+      this._toast.show('訪問回数を初期化しました。', 'success', this._TOAST_TIME);
     },
 
     /**
@@ -178,7 +178,7 @@ var MobamasDojo;
       this._config.hide = {};
       this._config.save();
       this.updateUI();
-      this._toast.show('道場の非表示設定を初期化しました。', 'alert-success', this._TOAST_TIME);
+      this._toast.show('道場の非表示設定を初期化しました。', 'success', this._TOAST_TIME);
     },
 
     /**
@@ -188,7 +188,7 @@ var MobamasDojo;
       this._config.reset();
       this._config.save();
       this.updateUI();
-      this._toast.show('全ての設定を初期化しました。', 'alert-success', this._TOAST_TIME);
+      this._toast.show('全ての設定を初期化しました。', 'success', this._TOAST_TIME);
     },
 
     /**
@@ -231,7 +231,7 @@ var MobamasDojo;
       var data = $('#dataOutput').val();
 
       if (data.length === 0) {
-        this._toast.show('データが入力されていません。', 'alert-success', this._TOAST_TIME);
+        this._toast.show('データが入力されていません。', 'success', this._TOAST_TIME);
         return;
       }
 
@@ -246,13 +246,13 @@ var MobamasDojo;
         this._config.setRawData(data);
       }
       catch (e) {
-        this._toast.show(e.message, 'alert-error');
+        this._toast.show(e.message, 'error');
         return;
       }
       this._config.load();
       this.updateUI();
       $('#config').hide();
-      this._toast.show('データを入力しました。', 'alert-success', this._TOAST_TIME);
+      this._toast.show('データを入力しました。', 'success', this._TOAST_TIME);
     },
 
     /**
@@ -300,8 +300,8 @@ var MobamasDojo;
       var m = this._config.visitedMax;
       var c = this._config.visited[id];
       var classes = {
-        1: ['btn-primary', 'btn-danger'],
-        3: ['btn-primary', 'btn-success', 'btn-warning', 'btn-danger']
+        1: ['primary', 'error'],
+        3: ['primary', 'success', 'warning', 'error']
       };
 
       if (c > m) {
@@ -314,8 +314,8 @@ var MobamasDojo;
         $('#d' + id).hide();
       }
       else {
-        $('#' + id).removeClass('btn-primary btn-success btn-warning btn-danger').addClass(classes[m][c]);
-        $('#h' + id).removeClass('btn-primary btn-success btn-warning btn-danger').addClass(classes[m][c]);
+        $('#' + id).removeClass('primary success warning error').addClass(classes[m][c]);
+        $('#h' + id).removeClass('primary success warning error').addClass(classes[m][c]);
         $('#d' + id).show();
       }
     },
@@ -324,11 +324,11 @@ var MobamasDojo;
      * 全ての道場ボタンの状態を更新する
      */
     updateButtonStateAll: function() {
-      var i, id, classes = ['btn-success', 'btn-warning', 'btn-danger'];
+      var i, id, classes = ['success', 'warning', 'error'];
 
       for (i = 0; i < classes.length; i++) {
-        $('a.' + classes[i]).removeClass(classes[i]).addClass('btn-primary');
-        $('button.' + classes[i]).removeClass(classes[i]).addClass('btn-primary');
+        $('a.' + classes[i]).removeClass(classes[i]).addClass('primary');
+        $('button.' + classes[i]).removeClass(classes[i]).addClass('primary');
       }
 
       for (id in this._config.visited) {
