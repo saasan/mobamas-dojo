@@ -17,8 +17,8 @@ $(function(){
     $('#closeBirthday').click(function(){ d.onclickCloseBirthday(); });
     $('#closeAlert').click(function(){ d.onclickCloseAlert(); });
     $('#openConfig').click(function(){ d.onclickOpenConfig(); });
-    $('#closeConfig').click(function(){ $('#sectionConfig').hide(); });
-    $('#configCancel').click(function(){ $('#sectionConfig').hide(); });
+    $('#closeConfig').click(function(){ $('#config').hide(); });
+    $('#configCancel').click(function(){ $('#config').hide(); });
     $('#dataInput').submit(function(){ d.onsubmitDataInput(); return false; });
 
     d.init();

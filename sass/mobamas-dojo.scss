@@ -3,7 +3,7 @@
 @import "normalize";
 @import "font-awesome";
 
-$margin: 7px;
+$default-margin: 7px;
 
 $body-bg:               #fff !default;
 $text-color:            #333 !default;
@@ -37,11 +37,11 @@ a {
 }
 
 p {
-  margin: $margin 0 0;
+  margin: $default-margin 0 0;
 }
 
 section {
-  margin: $margin;
+  margin: $default-margin;
   margin-top: 0;
 }
 
@@ -160,7 +160,7 @@ button.close {
 
 label {
   display: block;
-  margin-bottom: $margin;
+  margin-bottom: $default-margin;
 }
 
 label,
@@ -186,7 +186,7 @@ div.alert,
 .btn-block + .btn-block,
 .dojo,
 .well {
-  margin-top: $margin;
+  margin-top: $default-margin;
 }
 
 .well {
@@ -234,18 +234,18 @@ iframe {
 #alertContainer {
   position: fixed;
   z-index: 100;
-  bottom: $margin;
+  bottom: $default-margin;
   width:100%;
 }
 
 #alert {
-  margin: 0 $margin;
+  margin: 0 $default-margin;
   -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
      -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
           box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-#sectionConfig {
+#config {
   display: none;
   position: fixed;
   margin: 0;
@@ -258,14 +258,14 @@ iframe {
   z-index: 10;
 }
 
-#sectionInnerConfig {
+#configFixed {
   position: fixed;
   z-index: 20;
   top: 0;
   left: 0;
   right: 0;
   width: auto;
-  padding: $margin;
+  padding: $default-margin;
   background-color: $body-bg;
   border: 1px solid #e3e3e3;
   -webkit-box-sizing: border-box;
@@ -277,7 +277,7 @@ iframe {
 
 h2 {
   margin-top: 20px;
-  padding-bottom: $margin;
+  padding-bottom: $default-margin;
   font-size: 21px;
   color: $text-color;
   border-bottom: 1px solid #e5e5e5;
@@ -285,7 +285,7 @@ h2 {
 
 input[type="text"] {
   width: 100%;
-  margin-bottom: $margin;
+  margin-bottom: $default-margin;
   padding-right: 0;
   padding-left: 0;
   -webkit-box-sizing: border-box;
@@ -295,7 +295,7 @@ input[type="text"] {
 
 #associate {
   position: relative;
-  margin: 0 auto $margin;
+  margin: 0 auto $default-margin;
   width: 320px;
   height: 100px;
 
@@ -309,7 +309,7 @@ input[type="text"] {
       content: "\f061";
       color: #fff;
       background-color: rgba(0, 0, 0, 0.5);
-      margin: $margin;
+      margin: $default-margin;
       width: 38px;
       height: 38px;
       position: absolute;

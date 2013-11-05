@@ -156,7 +156,7 @@ var MobamasDojo;
       this._config.hideBirthday = $('#hideBirthday').is(':checked');
       this._config.save();
       this.updateUI();
-      $('#sectionConfig').hide();
+      $('#config').hide();
       this._toast.show('設定を保存しました。', 'alert-success', this._TOAST_TIME);
     },
 
@@ -221,7 +221,7 @@ var MobamasDojo;
      */
     onclickOpenConfig: function() {
       this.updateConfigUI();
-      $('#sectionConfig').show();
+      $('#config').show();
     },
 
     /**
@@ -251,7 +251,7 @@ var MobamasDojo;
       }
       this._config.load();
       this.updateUI();
-      $('#sectionConfig').hide();
+      $('#config').hide();
       this._toast.show('データを入力しました。', 'alert-success', this._TOAST_TIME);
     },
 
