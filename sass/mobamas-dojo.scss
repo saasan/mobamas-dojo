@@ -37,11 +37,12 @@ a {
 }
 
 p {
-  margin: 0 0 $margin;
+  margin: $margin 0 0;
 }
 
 section {
-  margin: 0 $margin $margin;
+  margin: $margin;
+  margin-top: 0;
 }
 
 .btn {
@@ -98,21 +99,11 @@ section {
   box-sizing: border-box;
 }
 
-.alert .close {
-  position: relative;
-  top: -2px;
-  right: -21px;
-  line-height: 20px;
-}
-
 button.close {
   padding: 0;
   cursor: pointer;
   background: transparent;
   border: 0;
-}
-
-.close {
   float: right;
   font-size: 20px;
   font-weight: bold;
@@ -124,23 +115,26 @@ button.close {
 
 .alert {
   padding: 8px 35px 8px 14px;
+  color: $brand-alert-color;
   text-shadow: 0 1px 0 rgba(255,255,255,0.5);
   background-color: $brand-alert-bg;
   border: 1px solid $brand-alert-border;
-}
 
-.alert,
-.alert h4 {
-  color: $brand-alert-color;
+  h4 {
+    margin:0 0 15px 0;
+  }
+
+  .close {
+    position: relative;
+    top: -2px;
+    right: -21px;
+    line-height: 20px;
+  }
 }
 
 .alert-block {
   padding-top: 14px;
   padding-bottom: 14px;
-}
-
-.alert-block > :last-child  {
-  margin-bottom: 0;
 }
 
 .alert-danger,
@@ -150,12 +144,11 @@ button.close {
   background-color: $brand-danger-bg;
   border-color: $brand-danger-bg;
   font-weight: bold;
-}
 
-.alert-danger .close,
-.alert-error .close {
-  color: $brand-danger-color;
-  opacity: 1;
+  .close {
+    color: $brand-danger-color;
+    opacity: 1;
+  }
 }
 
 .well {
@@ -227,8 +220,7 @@ iframe {
   float: right;
 }
 
-.dojo:after,
-.clearfix:after {
+.dojo:after {
   content: "";
   clear: both;
   display: block;
@@ -291,10 +283,6 @@ h2 {
   border-bottom: 1px solid #e5e5e5;
 }
 
-h4 {
-  margin:0 0 15px 0;
-}
-
 input[type="text"] {
   width: 100%;
   margin-bottom: $margin;
@@ -310,26 +298,28 @@ input[type="text"] {
   margin: 0 auto $margin;
   width: 320px;
   height: 100px;
-}
 
-#associate a:after {
-  @include icon-FontAwesome();
-  content: "\f061";
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.5);
-  margin: $margin;
-  width: 38px;
-  height: 38px;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: 1;
-  @include border-radius(3px);
-  line-height: 38px;
-  text-align: center;
-  font-size: 1.5em;
-}
+  a {
+    img {
+      border: 1px solid $brand-default-color;
+    }
 
-a img {
-  border: 1px solid $brand-default-color;
+    &:after {
+      @include icon-FontAwesome();
+      content: "\f061";
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.5);
+      margin: $margin;
+      width: 38px;
+      height: 38px;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: 1;
+      @include border-radius(3px);
+      line-height: 38px;
+      text-align: center;
+      font-size: 1.5em;
+    }
+  }
 }
