@@ -363,7 +363,9 @@ var MobamasDojo;
       }
 
       this.updateConfigUI();
-      this.updateBirthday();
+      if (!this._config.hideBirthday) {
+        this.updateBirthday();
+      }
 
       $('#info').css('display', this._config.infoClosed ? 'none' : 'block');
       $('#birthday').css('display', this._config.hideBirthday ? 'none' : 'block');
