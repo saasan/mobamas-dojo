@@ -300,8 +300,8 @@ var MobamasDojo;
       var m = this._config.visitedMax;
       var c = this._config.visited[id];
       var classes = {
-        1: ['primary', 'error'],
-        3: ['primary', 'success', 'warning', 'error']
+        1: ['', 'error'],
+        3: ['', 'success', 'warning', 'error']
       };
 
       if (c > m) {
@@ -314,8 +314,7 @@ var MobamasDojo;
         $('#d' + id).hide();
       }
       else {
-        $('#' + id).removeClass('primary success warning error').addClass(classes[m][c]);
-        $('#h' + id).removeClass('primary success warning error').addClass(classes[m][c]);
+        $('#d' + id).removeClass('success warning error').addClass(classes[m][c]);
         $('#d' + id).show();
       }
     },
@@ -324,12 +323,9 @@ var MobamasDojo;
      * 全ての道場ボタンの状態を更新する
      */
     updateButtonStateAll: function() {
-      var i, id, classes = ['success', 'warning', 'error'];
+      $('#dojos div.dojo').removeClass('success warning error');
 
-      for (i = 0; i < classes.length; i++) {
-        $('a.' + classes[i]).removeClass(classes[i]).addClass('primary');
-        $('button.' + classes[i]).removeClass(classes[i]).addClass('primary');
-      }
+      var id;
 
       for (id in this._config.visited) {
         this.updateButtonState(id);
@@ -360,10 +356,10 @@ var MobamasDojo;
       this.updateButtonStateAll();
 
       if (this._config.sameTab) {
-        $('a[target].dojo-link').removeAttr('target');
+        $('#dojos a[target].dojo-link').removeAttr('target');
       }
       else {
-        $('a:not([target]).dojo-link').attr('target', '_blank');
+        $('#dojos a:not([target]).dojo-link').attr('target', '_blank');
       }
 
       this.updateConfigUI();

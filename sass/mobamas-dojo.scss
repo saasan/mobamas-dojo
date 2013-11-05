@@ -74,31 +74,13 @@ img {
     box-sizing: border-box;
   }
 
-  &.primary,
-  &.success,
-  &.warning,
-  &.error {
+  &.primary {
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   }
 
   &.primary {
     color: $primary-color;
     background-color: $primary-bg;
-  }
-
-  &.success {
-    color: $success-color;
-    background-color: $success-bg;
-  }
-
-  &.warning {
-    color: $warning-color;
-    background-color: $warning-bg;
-  }
-
-  &.error {
-    color: $error-color;
-    background-color: $error-bg;
   }
 }
 
@@ -261,22 +243,43 @@ img {
     position: relative;
     margin-top: $default-margin;
     width: 100%;
-  }
 
-  .dojo-link {
-    position: absolute;
-    left: 0;
-    right: 40px;
-    text-align: left;
-    font-weight: bold;
-    overflow: hidden;
-    white-space: nowrap;
-  }
+    .dojo-link {
+      position: absolute;
+      left: 0;
+      right: 40px;
+      text-align: left;
+      font-weight: bold;
+      overflow: hidden;
+      white-space: nowrap;
+    }
 
-  .hide-dojo {
-    width: 40px;
-    padding: 4px 0px;
-    float: right;
+    .hide-dojo {
+      width: 40px;
+      padding: 4px 0px;
+      float: right;
+    }
+
+    .btn {
+      color: $primary-color;
+      background-color: $primary-bg;
+      text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    }
+
+    &.success .btn {
+      color: $success-color;
+      background-color: $success-bg;
+    }
+
+    &.warning .btn {
+      color: $warning-color;
+      background-color: $warning-bg;
+    }
+
+    &.error .btn {
+      color: $error-color;
+      background-color: $error-bg;
+    }
   }
 
   .dojo:after {
