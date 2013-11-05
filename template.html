@@ -32,13 +32,13 @@
   </section>
 
   <div id="alertContainer">
-    <div class="alert alert-block" id="alert">
+    <div id="alert" class="alert">
       <button type="button" class="close" id="closeAlert"><i class="icon-remove"></i></button>
       <p id="alertText">alert</p>
     </div>
   </div>
 
-  <section id="info" class="alert alert-block">
+  <section id="info" class="alert">
     <button type="button" class="close" id="closeInfo"><i class="icon-remove"></i></button>
     <h4>モバマス道場リストへようこそ！</h4>
     <p>
@@ -64,7 +64,7 @@
     </p>
   </section>
 
-  <section id="birthday" class="alert alert-block">
+  <section id="birthday" class="alert">
     <button type="button" class="close" id="closeBirthday"><i class="icon-remove"></i></button>
     <h4>誕生日</h4>
     <p id="birthdayToday"></p>
@@ -95,20 +95,20 @@
         <label>
           <input type="checkbox" id="hideBirthday"> 誕生日を表示しない
         </label>
-        <button type="button" class="btn btn-block btn-primary" id="configOK"><i class="icon-ok"></i> 設定を保存</button>
-        <button type="button" class="btn btn-block" id="configResetVisited">訪問回数を初期化</button>
-        <button type="button" class="btn btn-block" id="configResetHide">道場の非表示設定を初期化</button>
-        <button type="button" class="btn btn-block" id="configReset"><i class="icon-repeat"></i> 全ての設定を初期化</button>
-        <button type="button" class="btn btn-block" id="configCancel"><i class="icon-remove"></i> キャンセル</button>
+        <button type="button" class="btn block btn-primary" id="configOK"><i class="icon-ok"></i> 設定を保存</button>
+        <button type="button" class="btn block" id="configResetVisited">訪問回数を初期化</button>
+        <button type="button" class="btn block" id="configResetHide">道場の非表示設定を初期化</button>
+        <button type="button" class="btn block" id="configReset"><i class="icon-repeat"></i> 全ての設定を初期化</button>
+        <button type="button" class="btn block" id="configCancel"><i class="icon-remove"></i> キャンセル</button>
       </section>
 
       <h2>データ入出力</h2>
       <section>
         <form id="dataInput">
           <input type="text" id="dataOutput" onfocus="this.select();">
-          <button type="submit" class="btn btn-block"><i class="icon-signin"></i> 入力</button>
-          <button type="button" class="btn btn-block" onclick="$('#dataOutput').select();">テキスト全選択</button>
-          <button type="button" class="btn btn-block" onclick="$('#dataOutput').val('');"><i class="icon-remove"></i> テキスト全消去</button>
+          <button type="submit" class="btn block"><i class="icon-signin"></i> 入力</button>
+          <button type="button" class="btn block" onclick="$('#dataOutput').select();">テキスト全選択</button>
+          <button type="button" class="btn block" onclick="$('#dataOutput').val('');"><i class="icon-remove"></i> テキスト全消去</button>
         </form>
       </section>
 
@@ -131,11 +131,11 @@
   </section>
 
   <section id="sectionDojoList">
-    <button type="button" class="btn btn-block" id="openConfig"><i class="icon-cog"></i> 設定</button>
+    <button type="button" class="btn block" id="openConfig"><i class="icon-cog"></i> 設定</button>
 {%- if type == 'rank' %}
-    <a class="btn btn-block" href="lv.html">レベル順へ変更</a>
+    <a class="btn block" href="lv.html">レベル順へ変更</a>
 {%- elif type == 'lv' %}
-    <a class="btn btn-block" href="./">ランク順へ変更</a>
+    <a class="btn block" href="./">ランク順へ変更</a>
 {%- endif %}
 {% if dojos|length > 0 -%}
 {%- for dojo in dojos %}
