@@ -31,18 +31,30 @@ $brand-alert-border:    #fbeed5 !default;
  * $brand-danger-bg:       #db4437 !default;
 */
 
+h3 {
+  margin: 0;
+  margin-bottom: $default-margin * 2;
+  font-size: medium;
+  font-weight: bold;
+}
+
 a {
   color: $link-color;
   text-decoration: none;
 }
 
 p {
-  margin: $default-margin 0 0;
+  margin: 0;
+  margin-top: $default-margin;
 }
 
 section {
   margin: $default-margin;
   margin-top: 0;
+}
+
+img {
+  vertical-align: middle;
 }
 
 .btn {
@@ -62,6 +74,7 @@ section {
   &.block {
     display: block;
     width: 100%;
+    margin-top: $default-margin;
     padding-right: 0;
     padding-left: 0;
     -webkit-box-sizing: border-box;
@@ -99,7 +112,7 @@ section {
   background-color: $brand-danger-bg;
 }
 
-button.close {
+.close {
   padding: 0;
   cursor: pointer;
   background: transparent;
@@ -114,22 +127,12 @@ button.close {
 }
 
 .alert {
-  padding: 14px 35px 14px 14px;
+  margin-top: $default-margin;
+  padding: $default-margin * 2;
   color: $brand-alert-color;
   text-shadow: 0 1px 0 rgba(255,255,255,0.5);
   background-color: $brand-alert-bg;
   border: 1px solid $brand-alert-border;
-
-  h4 {
-    margin:0 0 15px 0;
-  }
-
-  .close {
-    position: relative;
-    top: -2px;
-    right: -21px;
-    line-height: 20px;
-  }
 }
 
 .alert-danger,
@@ -144,81 +147,6 @@ button.close {
     color: $brand-danger-color;
     opacity: 1;
   }
-}
-
-.well {
-  min-height: 20px;
-  padding: 9px;
-  background-color: #f5f5f5;
-  border: 1px solid #e3e3e3;
-}
-
-label {
-  display: block;
-  margin-bottom: $default-margin;
-}
-
-label,
-select,
-button,
-input[type="button"],
-input[type="reset"],
-input[type="submit"],
-input[type="radio"],
-input[type="checkbox"] {
-  cursor: pointer;
-}
-
-
-
-
-
-
-
-
-nav,
-div.alert,
-.btn.block + .btn.block,
-.dojo,
-.well {
-  margin-top: $default-margin;
-}
-
-.well {
-  line-height: 20px;
-  vertical-align: middle;
-}
-
-img,
-iframe {
-  vertical-align: middle;
-}
-
-.dojo {
-  position: relative;
-  width: 100%;
-}
-
-.dojo-link {
-  position: absolute;
-  left: 0;
-  right: 40px;
-  text-align: left;
-  font-weight: bold;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.hide-dojo {
-  width: 40px;
-  padding: 4px 0px;
-  float: right;
-}
-
-.dojo:after {
-  content: "";
-  clear: both;
-  display: block;
 }
 
 #info,
@@ -238,54 +166,10 @@ iframe {
   -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
      -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
           box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
 
-#config {
-  display: none;
-  position: fixed;
-  margin: 0;
-  content: "";
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 10;
-}
-
-#configFixed {
-  position: fixed;
-  z-index: 20;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: auto;
-  padding: $default-margin;
-  background-color: $body-bg;
-  border: 1px solid #e3e3e3;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  overflow: auto;
-  max-height: 100%;
-}
-
-h2 {
-  margin-top: 20px;
-  padding-bottom: $default-margin;
-  font-size: 21px;
-  color: $text-color;
-  border-bottom: 1px solid #e5e5e5;
-}
-
-input[type="text"] {
-  width: 100%;
-  margin-bottom: $default-margin;
-  padding-right: 0;
-  padding-left: 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+  p {
+    margin-top: 0;
+  }
 }
 
 #associate {
@@ -316,5 +200,104 @@ input[type="text"] {
       text-align: center;
       font-size: 1.5em;
     }
+  }
+}
+
+#config {
+  display: none;
+  position: fixed;
+  margin: 0;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+
+  #configFixed {
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: auto;
+    padding: $default-margin;
+    background-color: $body-bg;
+    border: 1px solid #e3e3e3;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: auto;
+    max-height: 100%;
+  }
+
+  h2 {
+    margin-top: 20px;
+    padding-bottom: $default-margin;
+    font-size: 21px;
+    color: $text-color;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  label {
+    display: block;
+    margin-top: $default-margin;
+  }
+
+  label,
+  select,
+  button,
+  input[type="button"],
+  input[type="reset"],
+  input[type="submit"],
+  input[type="radio"],
+  input[type="checkbox"] {
+    cursor: pointer;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .well {
+    padding: $default-margin * 2;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+  }
+}
+
+#dojos {
+  .dojo {
+    position: relative;
+    margin-top: $default-margin;
+    width: 100%;
+  }
+
+  .dojo-link {
+    position: absolute;
+    left: 0;
+    right: 40px;
+    text-align: left;
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .hide-dojo {
+    width: 40px;
+    padding: 4px 0px;
+    float: right;
+  }
+
+  .dojo:after {
+    content: "";
+    clear: both;
+    display: block;
   }
 }
