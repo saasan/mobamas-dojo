@@ -4,8 +4,8 @@ lv.html
 mobamas-dojo.css
 mobamas-dojo-min.js
 compiler.jar
-.sass-cache
-font-awesome
+.sass-cache/
+font-awesome/
 
 #################
 ## Eclipse
