@@ -112,6 +112,11 @@ img {
     background-color: $error-bg;
     border-color: $error-bg;
     font-weight: bold;
+
+    .close {
+      color: $error-color;
+      opacity: 1;
+    }
   }
 }
 
