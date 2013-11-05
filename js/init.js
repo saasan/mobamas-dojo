@@ -1,8 +1,9 @@
-/* jshint indent: 2, globalstrict: true, jquery: true */
+/* jshint indent: 2, jquery: true */
 /* global MobamasDojo */
-'use strict';
 
 $(function(){
+  'use strict';
+
   try {
     var d = new MobamasDojo();
 
