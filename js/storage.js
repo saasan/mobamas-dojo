@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 /* global localStorage, sessionStorage */
 
-var Storage;
+var S2Storage;
 
 (function(){
   'use strict';
@@ -13,7 +13,7 @@ var Storage;
    * @param {string} [opt_namespace] 名前空間
    * @constructor
    */
-  Storage = function(opt_type, opt_namespace) {
+  S2Storage = function(opt_type, opt_namespace) {
     if (typeof localStorage === 'undefined') {
       throw new Error('Web Storage is not available');
     }
@@ -25,7 +25,7 @@ var Storage;
     this._namespace = opt_namespace + '_';
   };
 
-  Storage.prototype = {
+  S2Storage.prototype = {
     _namespace: '',
 
     /**

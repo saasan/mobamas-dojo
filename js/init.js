@@ -24,7 +24,11 @@ $(function(){
     d.init();
   }
   catch (e) {
-    $('#toastText').text(e.message);
+    var message = '<h3>' + e.message + '</h3>';
+    if (e.stack) {
+      message += '<p>' + e.stack + '</p>';
+    }
+    $('#toastMessage').html(message);
     $('#toast').removeClass('success').addClass('error').show();
   }
 });

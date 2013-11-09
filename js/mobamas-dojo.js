@@ -1,5 +1,5 @@
 /* jshint indent: 2, jquery: true */
-/* global setTimeout, clearTimeout, Storage, Config, Birthday */
+/* global setTimeout, clearTimeout, Config, Birthday */
 
 var Toast;
 var MobamasDojo;
@@ -31,7 +31,7 @@ var MobamasDojo;
       var self = this;
 
       if (this._element.is(':hidden') || this._timerId === null) {
-        $('#toastText').text(message);
+        $('#toastMessage').html(message);
         this._element.removeClass('success error');
         if (arguments.length > 1) {
           this._element.addClass(opt_class);

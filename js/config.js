@@ -1,5 +1,5 @@
 /* jshint indent: 2 */
-/* global Storage */
+/* global S2Storage */
 
 var Config;
 
@@ -9,12 +9,16 @@ var Config;
   /**
    * 設定クラス
    * @param {object} [opt_defaultValues] 設定のデフォルト値
-   * @param {string} [opt_storageNamespace] Storageの名前空間
-   * @param {string} [opt_storageKey] Storageのキー
+   * @param {string} [opt_storageNamespace] S2Storageの名前空間
+   * @param {string} [opt_storageKey] S2Storageのキー
    * @param {function} [opt_reviver] 設定値の特殊な変換を行う関数
    * @constructor
    */
   Config = function(opt_defaultValues, opt_storageNamespace, opt_storageKey, opt_reviver) {
+    if (typeof S2Storage === 'undefined') {
+      throw new Error('S2Storage Class is not available');
+    }
+
     for (var i in this) {
       this._initialKeys[i] = true;
     }
@@ -24,7 +28,7 @@ var Config;
       this._importValues(opt_defaultValues);
     }
 
-    this._storage = new Storage(true, opt_storageNamespace);
+    this._storage = new S2Storage(true, opt_storageNamespace);
 
     if (arguments.length >= 3) {
       this.storageKey = opt_storageKey;
@@ -98,7 +102,7 @@ var Config;
     },
 
     /**
-     * Storageのキー
+     * S2Storageのキー
      * @type {string}
      */
     storageKey: 'config',

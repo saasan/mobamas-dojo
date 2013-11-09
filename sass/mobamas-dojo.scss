@@ -161,10 +161,6 @@ img {
   margin: $default-margin;
   z-index: 100;
   @include box-shadow(0 0 15px rgba(0, 0, 0, 0.5));
-
-  p {
-    margin-top: 0;
-  }
 }
 
 #config {
