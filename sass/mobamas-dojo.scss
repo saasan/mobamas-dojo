@@ -117,7 +117,8 @@ img {
 
 #info,
 #birthday,
-#toast {
+#toast,
+#config {
   display: none;
 }
 
@@ -167,31 +168,16 @@ img {
 }
 
 #config {
-  display: none;
   position: fixed;
-  margin: 0;
-  content: "";
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
   z-index: 10;
-
-  #configFixed {
-    position: fixed;
-    z-index: 20;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: auto;
-    padding: $default-margin;
-    background-color: $body-bg;
-    border: 1px solid #e3e3e3;
-    @include box-sizing(border-box);
-    overflow: auto;
-    max-height: 100%;
-  }
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: $default-margin;
+  background-color: $body-bg;
+  overflow: auto;
 
   h2 {
     margin-top: 20px;
