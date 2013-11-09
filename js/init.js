@@ -15,7 +15,7 @@ $(function(){
     $('#configReset').click(function(){ d.onclickConfigReset($(this)); });
     $('#closeInfo').click(function(){ d.onclickCloseInfo(); });
     $('#closeBirthday').click(function(){ d.onclickCloseBirthday(); });
-    $('#closeAlert').click(function(){ d.onclickCloseAlert(); });
+    $('#closeToast').click(function(){ d.onclickCloseToast(); });
     $('#openConfig').click(function(){ d.onclickOpenConfig(); });
     $('#closeConfig').click(function(){ $('#config').hide(); });
     $('#configCancel').click(function(){ $('#config').hide(); });
@@ -24,8 +24,7 @@ $(function(){
     d.init();
   }
   catch (e) {
-    $('#alertText').text(e.message);
-    $('#alert').removeClass('success').addClass('error');
-    $('#alertContainer').show();
+    $('#toastText').text(e.message);
+    $('#toast').removeClass('success').addClass('error').show();
   }
 });

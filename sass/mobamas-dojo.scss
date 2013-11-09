@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import "compass/css3/border-radius";
+@import "compass";
 @import "normalize";
 @import "font-awesome";
 
@@ -19,9 +19,9 @@ $warning-color: #fff;
 $warning-bg:    #ffc100;
 $error-color:   #fff;
 $error-bg:      #e70048;
-$alert-color:   #555;
-$alert-bg:      #fcf8e3;
-$alert-border:  #fbeed5;
+$info-color:    #555;
+$info-bg:       #fcf8e3;
+$info-border:   #fbeed5;
 
 h3 {
   margin: 0;
@@ -69,18 +69,13 @@ img {
     margin-top: $default-margin;
     padding-right: 0;
     padding-left: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-
-  &.primary {
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    @include box-sizing(border-box);
   }
 
   &.primary {
     color: $primary-color;
     background-color: $primary-bg;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   }
 }
 
@@ -94,17 +89,17 @@ img {
   font-weight: bold;
   line-height: 20px;
   color: #000;
-  text-shadow: 0 1px 0 #ffffff;
+  text-shadow: 0 1px 0 #fff;
   opacity: .2;
 }
 
-.alert {
+.info {
   margin-top: $default-margin;
   padding: $default-margin * 2;
-  color: $alert-color;
+  color: $info-color;
   text-shadow: 0 1px 0 rgba(255,255,255,0.5);
-  background-color: $alert-bg;
-  border: 1px solid $alert-border;
+  background-color: $info-bg;
+  border: 1px solid $info-border;
 
   &.error {
     color: $error-color;
@@ -121,27 +116,9 @@ img {
 }
 
 #info,
-#alertContainer,
-#birthday {
+#birthday,
+#toast {
   display: none;
-}
-
-#alertContainer {
-  position: fixed;
-  z-index: 100;
-  bottom: $default-margin;
-  width:100%;
-}
-
-#alert {
-  margin: 0 $default-margin;
-  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-     -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-
-  p {
-    margin-top: 0;
-  }
 }
 
 #associate {
@@ -175,6 +152,20 @@ img {
   }
 }
 
+#toast {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: $default-margin;
+  z-index: 100;
+  @include box-shadow(0 0 15px rgba(0, 0, 0, 0.5));
+
+  p {
+    margin-top: 0;
+  }
+}
+
 #config {
   display: none;
   position: fixed;
@@ -197,9 +188,7 @@ img {
     padding: $default-margin;
     background-color: $body-bg;
     border: 1px solid #e3e3e3;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+    @include box-sizing(border-box);
     overflow: auto;
     max-height: 100%;
   }
@@ -232,9 +221,7 @@ img {
     width: 100%;
     padding-right: 0;
     padding-left: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+    @include box-sizing(border-box);
   }
 
   .well {

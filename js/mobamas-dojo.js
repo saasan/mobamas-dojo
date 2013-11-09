@@ -12,10 +12,12 @@ var MobamasDojo;
    * @constructor
    */
   Toast = function() {
+    this._element = $('#toast');
   };
 
   Toast.prototype = {
-    _id: null,
+    _element: null,
+    _timerId: null,
 
     /**
      * トーストを表示する
@@ -28,24 +30,30 @@ var MobamasDojo;
     show: function(message, opt_class, opt_hide) {
       var self = this;
 
-      if ($('#alertContainer').is(':hidden') || this._id === null) {
-        $('#alertText').text(message);
-        var alert = $('#alert');
-        alert.removeClass('success error');
+      if (this._element.is(':hidden') || this._timerId === null) {
+        $('#toastText').text(message);
+        this._element.removeClass('success error');
         if (arguments.length > 1) {
-          alert.addClass(opt_class);
+          this._element.addClass(opt_class);
         }
-        $('#alertContainer').show();
+        this._element.show();
 
         if (arguments.length > 2 && typeof opt_hide === 'number') {
-          this._id = setTimeout(function(){ $('#alertContainer').hide(); self._id = null; }, opt_hide);
+          this._timerId = setTimeout(function(){ self._element.hide(); self._timerId = null; }, opt_hide);
         }
       }
       else {
-        $('#alertContainer').hide();
-        clearTimeout(this._id);
-        this._id = setTimeout(function(){ self.show(message, opt_class, opt_hide); }, 300);
+        this._element.hide();
+        clearTimeout(this._timerId);
+        this._timerId = setTimeout(function(){ self.show(message, opt_class, opt_hide); }, 300);
       }
+    },
+
+    /**
+     * トーストを閉じる
+     */
+    close: function() {
+      this._element.hide();
     }
   };
 
@@ -210,10 +218,10 @@ var MobamasDojo;
     },
 
     /**
-     * アラートの×ボタン
+     * トーストの×ボタン
      */
-    onclickCloseAlert: function() {
-      $('#alertContainer').hide();
+    onclickCloseToast: function() {
+      this._toast.close();
     },
 
     /**
