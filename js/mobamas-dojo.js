@@ -1,67 +1,18 @@
 /* jshint indent: 2, jquery: true */
-/* global setTimeout, clearTimeout, Config, Birthday */
+/* global Toast, Config, Birthday */
 
-var Toast;
 var MobamasDojo;
 
 (function(){
   'use strict';
 
   /**
-   * トースト
-   * @constructor
-   */
-  Toast = function() {
-    this._element = $('#toast');
-  };
-
-  Toast.prototype = {
-    _element: null,
-    _timerId: null,
-
-    /**
-     * トーストを表示する
-     * @param {string} message 表示するメッセージ
-     * @param {string} [opt_class] トーストで使用するHTMLのクラス
-     * @param {number} [opt_hide] 指定された時間が経過したら自動で閉じる
-     *                            単位はミリ秒
-     *                            指定がなければ自動で閉じない
-     */
-    show: function(message, opt_class, opt_hide) {
-      var self = this;
-
-      if (this._element.is(':hidden') || this._timerId === null) {
-        $('#toastMessage').html(message);
-        this._element.removeClass('success error');
-        if (arguments.length > 1) {
-          this._element.addClass(opt_class);
-        }
-        this._element.show();
-
-        if (arguments.length > 2 && typeof opt_hide === 'number') {
-          this._timerId = setTimeout(function(){ self._element.hide(); self._timerId = null; }, opt_hide);
-        }
-      }
-      else {
-        this._element.hide();
-        clearTimeout(this._timerId);
-        this._timerId = setTimeout(function(){ self.show(message, opt_class, opt_hide); }, 300);
-      }
-    },
-
-    /**
-     * トーストを閉じる
-     */
-    close: function() {
-      this._element.hide();
-    }
-  };
-
-  /**
    * モバマス道場
+   * @param {Toast} toast メッセージ出力用のトーストクラス
    * @constructor
    */
-  MobamasDojo = function() {
+  MobamasDojo = function(toast) {
+    this._toast = toast;
   };
 
   MobamasDojo.prototype = {
@@ -88,7 +39,6 @@ var MobamasDojo;
     init: function() {
       var now = new Date();
 
-      this._toast = new Toast();
       this._config = new Config(
         {
           visited: {},
@@ -165,7 +115,7 @@ var MobamasDojo;
       this._config.save();
       this.updateUI();
       $('#config').hide();
-      this._toast.show('設定を保存しました。', 'success', this._TOAST_TIME);
+      this._toast.show('設定を保存しました。', 'info success', this._TOAST_TIME);
     },
 
     /**
@@ -176,7 +126,7 @@ var MobamasDojo;
 
       this._config.save();
       this.updateUI();
-      this._toast.show('訪問回数を初期化しました。', 'success', this._TOAST_TIME);
+      this._toast.show('訪問回数を初期化しました。', 'info success', this._TOAST_TIME);
     },
 
     /**
@@ -186,7 +136,7 @@ var MobamasDojo;
       this._config.hide = {};
       this._config.save();
       this.updateUI();
-      this._toast.show('道場の非表示設定を初期化しました。', 'success', this._TOAST_TIME);
+      this._toast.show('道場の非表示設定を初期化しました。', 'info success', this._TOAST_TIME);
     },
 
     /**
@@ -196,7 +146,7 @@ var MobamasDojo;
       this._config.reset();
       this._config.save();
       this.updateUI();
-      this._toast.show('全ての設定を初期化しました。', 'success', this._TOAST_TIME);
+      this._toast.show('全ての設定を初期化しました。', 'info success', this._TOAST_TIME);
     },
 
     /**
@@ -218,13 +168,6 @@ var MobamasDojo;
     },
 
     /**
-     * トーストの×ボタン
-     */
-    onclickCloseToast: function() {
-      this._toast.close();
-    },
-
-    /**
      * 設定
      */
     onclickOpenConfig: function() {
@@ -239,7 +182,7 @@ var MobamasDojo;
       var data = $('#dataOutput').val();
 
       if (data.length === 0) {
-        this._toast.show('データが入力されていません。', 'success', this._TOAST_TIME);
+        this._toast.show('データが入力されていません。', 'info success', this._TOAST_TIME);
         return;
       }
 
@@ -254,13 +197,13 @@ var MobamasDojo;
         this._config.setRawData(data);
       }
       catch (e) {
-        this._toast.show(e.message, 'error');
+        this._toast.show(e.message, 'info error');
         return;
       }
       this._config.load();
       this.updateUI();
       $('#config').hide();
-      this._toast.show('データを入力しました。', 'success', this._TOAST_TIME);
+      this._toast.show('データを入力しました。', 'info success', this._TOAST_TIME);
     },
 
     /**

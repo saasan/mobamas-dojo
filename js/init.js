@@ -1,12 +1,14 @@
 /* jshint indent: 2, jquery: true */
-/* global MobamasDojo */
+/* global Toast, MobamasDojo */
 
 $(function(){
   'use strict';
 
   try {
-    var d = new MobamasDojo();
+    var t = new Toast('#toast', '#toastMessage');
+    $('#closeToast').click(function(){ t.close(); });
 
+    var d = new MobamasDojo(t);
     $('a.dojo-link').click(function(){ d.onclickDojoLink($(this)); });
     $('button.hide-dojo').click(function(){ d.onclickHideDojo($(this)); });
     $('#configOK').click(function(){ d.onclickConfigOK($(this)); });
@@ -15,7 +17,6 @@ $(function(){
     $('#configReset').click(function(){ d.onclickConfigReset($(this)); });
     $('#closeInfo').click(function(){ d.onclickCloseInfo(); });
     $('#closeBirthday').click(function(){ d.onclickCloseBirthday(); });
-    $('#closeToast').click(function(){ d.onclickCloseToast(); });
     $('#openConfig').click(function(){ d.onclickOpenConfig(); });
     $('#closeConfig').click(function(){ $('#config').hide(); });
     $('#configCancel').click(function(){ $('#config').hide(); });
@@ -28,7 +29,6 @@ $(function(){
     if (e.stack) {
       message += '<p>' + e.stack + '</p>';
     }
-    $('#toastMessage').html(message);
-    $('#toast').removeClass('success').addClass('error').show();
+    t.show(message, 'info error');
   }
 });
