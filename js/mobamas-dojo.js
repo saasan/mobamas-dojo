@@ -215,6 +215,12 @@ var MobamasDojo;
       resetTime.setMinutes(this._RESET_MINUTE);
       resetTime.setSeconds(0);
       resetTime.setMilliseconds(0);
+
+      // 未来だったら1日前にする
+      if (resetTime > Date.now()) {
+        resetTime.setDate(resetTime.getDate() - 1);
+      }
+
       return resetTime;
     },
 
@@ -223,15 +229,9 @@ var MobamasDojo;
      * @return {boolean} 必要性の有無
      */
     needReset: function() {
-      var now = new Date();
       var resetTime = this.getResetTime();
-      var oneDayAgo = new Date(now.getTime());
-      oneDayAgo.setDate(oneDayAgo.getDate() - 1);
 
-      var moreThanOneDayAgo = this._config.lastTime < oneDayAgo;
-      var resetTimePassed = this._config.lastTime < resetTime && resetTime <= now;
-
-      return (moreThanOneDayAgo || resetTimePassed);
+      return (this._config.lastTime < resetTime && resetTime <= Date.now());
     },
 
     /**
