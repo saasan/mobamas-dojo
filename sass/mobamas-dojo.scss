@@ -233,6 +233,46 @@ img {
   }
 }
 
+@media screen and (min-width : 660px) {
+  body {
+    width: 640px;
+    margin: 0 auto;
+  }
+
+  #ad,
+  #config,
+  #buttons,
+  #dojos {
+    width: 306px;
+  }
+
+  #info,
+  #birthday {
+    width: 276px;
+  }
+
+  #toast {
+    width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #config {
+    display: block;
+    position: static;
+  }
+
+  #config .close,
+  #openConfig {
+      display: none;
+  }
+
+  #dojos {
+    position: absolute;
+    top: 0;
+    left: 50%;
+  }
+}
 
 /*********************************
  * FlexSlider

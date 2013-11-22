@@ -68,65 +68,7 @@
     <div id="toastMessage"></div>
   </section>
 
-  <section id="config">
-    <button type="button" class="close" id="closeConfig"><i class="icon-remove"></i></button>
-    <h2>設定</h2>
-    <section>
-      <label>
-        <input type="checkbox" id="sameTab"> 道場を同じタブで開く
-      </label>
-      <label>
-        <select class="input-mini" id="visitedMax">
-          <option value="1">1</option>
-          <option value="3">3</option>
-        </select>
-        回以上訪問した時、道場を訪問済とする
-      </label>
-      <label>
-        <input type="checkbox" id="autoHide"> 訪問済の道場を表示しない
-      </label>
-      <label>
-        ┗ <input type="checkbox" id="keepLastVisited"> 最後に訪問した道場を残す
-      </label>
-      <label>
-        <input type="checkbox" id="hideBirthday"> 誕生日を表示しない
-      </label>
-      <button type="button" class="btn block primary" id="configOK"><i class="icon-ok"></i> 設定を保存</button>
-      <button type="button" class="btn block" id="configResetVisited">訪問回数を初期化</button>
-      <button type="button" class="btn block" id="configResetHide">道場の非表示設定を初期化</button>
-      <button type="button" class="btn block" id="configReset"><i class="icon-repeat"></i> 全ての設定を初期化</button>
-      <button type="button" class="btn block" id="configCancel"><i class="icon-remove"></i> キャンセル</button>
-    </section>
-
-    <h2>データ入出力</h2>
-    <section>
-      <form id="dataInput">
-        <input type="text" id="dataOutput" onfocus="this.select();">
-        <button type="submit" class="btn block"><i class="icon-signin"></i> 入力</button>
-        <button type="button" class="btn block" onclick="$('#dataOutput').select();">テキスト全選択</button>
-        <button type="button" class="btn block" onclick="$('#dataOutput').val('');"><i class="icon-remove"></i> テキスト全消去</button>
-      </form>
-    </section>
-
-    <h2>その他</h2>
-    <section class="well">
-      <h3>最終更新日時</h3>
-      <p>{{ now|datetime }}</p>
-    </section>
-    <section class="well">
-      <h3>製作者</h3>
-      <p>
-        <a href="http://sp.pf.mbga.jp/12008305/?guid=ON&amp;url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fprofile%2Fshow%2F59953092" target="_blank">カガミ</a>
-        (<a href="https://twitter.com/saasan" target="_blank">@saasan</a>)
-      </p>
-    </section>
-    <section class="well">
-      <h3>このサイトのQRコード</h3>
-      <p><img src="img/qrcode.png" width="111" height="111" alt="QRコード"></p>
-    </section>
-  </section>
-
-  <section>
+  <section id="buttons">
     <button type="button" class="btn block" id="openConfig"><i class="icon-cog"></i> 設定</button>
 {%- if type == 'rank' %}
     <a class="btn block" href="lv.html">レベル順へ変更</a>
@@ -192,6 +134,64 @@
         </a>
       </li>
     </ul>
+  </section>
+
+  <section id="config">
+    <button type="button" class="close" id="closeConfig"><i class="icon-remove"></i></button>
+    <h2>設定</h2>
+    <section>
+      <label>
+        <input type="checkbox" id="sameTab"> 道場を同じタブで開く
+      </label>
+      <label>
+        <select class="input-mini" id="visitedMax">
+          <option value="1">1</option>
+          <option value="3">3</option>
+        </select>
+        回以上訪問した時、道場を訪問済とする
+      </label>
+      <label>
+        <input type="checkbox" id="autoHide"> 訪問済の道場を表示しない
+      </label>
+      <label>
+        ┗ <input type="checkbox" id="keepLastVisited"> 最後に訪問した道場を残す
+      </label>
+      <label>
+        <input type="checkbox" id="hideBirthday"> 誕生日を表示しない
+      </label>
+      <button type="button" class="btn block primary" id="configOK"><i class="icon-ok"></i> 設定を保存</button>
+      <button type="button" class="btn block" id="configResetVisited">訪問回数を初期化</button>
+      <button type="button" class="btn block" id="configResetHide">道場の非表示設定を初期化</button>
+      <button type="button" class="btn block" id="configReset"><i class="icon-repeat"></i> 全ての設定を初期化</button>
+      <button type="button" class="btn block" id="configCancel"><i class="icon-remove"></i> キャンセル</button>
+    </section>
+
+    <h2>データ入出力</h2>
+    <section>
+      <form id="dataInput">
+        <input type="text" id="dataOutput" onfocus="this.select();">
+        <button type="submit" class="btn block"><i class="icon-signin"></i> 入力</button>
+        <button type="button" class="btn block" onclick="$('#dataOutput').select();">テキスト全選択</button>
+        <button type="button" class="btn block" onclick="$('#dataOutput').val('');"><i class="icon-remove"></i> テキスト全消去</button>
+      </form>
+    </section>
+
+    <h2>その他</h2>
+    <section class="well">
+      <h3>最終更新日時</h3>
+      <p>{{ now|datetime }}</p>
+    </section>
+    <section class="well">
+      <h3>製作者</h3>
+      <p>
+        <a href="http://sp.pf.mbga.jp/12008305/?guid=ON&amp;url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fprofile%2Fshow%2F59953092" target="_blank">カガミ</a>
+        (<a href="https://twitter.com/saasan" target="_blank">@saasan</a>)
+      </p>
+    </section>
+    <section class="well">
+      <h3>このサイトのQRコード</h3>
+      <p><img src="img/qrcode.png" width="111" height="111" alt="QRコード"></p>
+    </section>
   </section>
 
   <section id="dojos">

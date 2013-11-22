@@ -18,8 +18,8 @@ $(function(){
     $('#closeInfo').click(function(){ d.onclickCloseInfo(); });
     $('#closeBirthday').click(function(){ d.onclickCloseBirthday(); });
     $('#openConfig').click(function(){ d.onclickOpenConfig(); });
-    $('#closeConfig').click(function(){ $('#config').hide(); });
-    $('#configCancel').click(function(){ $('#config').hide(); });
+    $('#closeConfig').click(function(){ d.onclickConfigCancel(); });
+    $('#configCancel').click(function(){ d.onclickConfigCancel(); });
     $('#dataInput').submit(function(){ d.onsubmitDataInput(); return false; });
 
     d.init();
