@@ -86,6 +86,7 @@ $(function(){
     $('#dataInput').submit(function(){ d.onsubmitDataInput(); return false; });
     d.init();
 
+    $('#versionedInfo').versionedInfo();
     $('.close').closeButton();
     $('#configCancel').closeButton();
 
