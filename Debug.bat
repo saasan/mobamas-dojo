@@ -3,6 +3,6 @@
 PUSHD %~dp0
 
 python main.py --debug
-CALL syncDebugIgnoreHTML.bat
+CALL compile.bat
 
 POPD
