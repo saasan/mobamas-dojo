@@ -131,7 +131,6 @@ img {
 #birthday,
 #toast,
 #buttons,
-#ad,
 #config,
 #dojos {
   display: none;
@@ -150,28 +149,8 @@ img {
 #ad {
   margin: $default-margin;
 
-  a {
-    display: block;
-    position: relative;
-
-    img {
-      display: block;
-      width: 100%;
-    }
-
-    .caption {
-      display: block;
-      width: 96%;
-      padding: 2%;
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      background-color: rgba(0, 0, 0, 0.5);
-      color: #fff;
-      text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
-      font-size: 10px;
-      line-height: 12px;
-    }
+  .adsbygoogle {
+    margin: 0 auto;
   }
 }
 
