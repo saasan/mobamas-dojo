@@ -132,6 +132,7 @@ img {
 #birthday,
 #toast,
 #buttons,
+#mobamasMenu,
 #config,
 #dojos {
   display: none;
@@ -147,9 +148,20 @@ img {
   @include box-shadow(0 0 15px rgba(0, 0, 0, 0.5));
 }
 
-#ad {
-  margin: $default-margin;
+#mobamasMenu {
+  margin-bottom: 0;
+  text-align: center;
 
+  .mobamas-menu-item {
+    @include border-radius($default-margin);
+    padding: $default-margin;
+    margin-bottom: $default-margin;
+    line-height: normal;
+    min-width: 15%;
+  }
+}
+
+#ad {
   .adsbygoogle {
     margin: 0 auto;
   }
@@ -178,6 +190,8 @@ img {
   label {
     display: block;
     margin-top: $default-margin;
+    height: 1.5em;
+    line-height: 1.5em;
   }
 
   label,
@@ -196,6 +210,16 @@ img {
     padding-right: 0;
     padding-left: 0;
     @include box-sizing(border-box);
+  }
+
+  .config-mobamas-menu {
+    @include clearfix;
+
+    label {
+      width: 33%;
+      float: left;
+      overflow: hidden;
+    }
   }
 
   .well {
@@ -264,6 +288,7 @@ $responsive-width1: 668px;
     margin: 0 auto;
   }
 
+  #mobamasMenu,
   #ad,
   #config,
   #buttons,
@@ -308,6 +333,7 @@ $responsive-width2: 800px;
     margin: 0 auto;
   }
 
+  #mobamasMenu,
   #ad,
   #config,
   #buttons,
