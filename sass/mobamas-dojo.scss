@@ -154,9 +154,7 @@ img {
 
   .mobamas-menu-item {
     @include border-radius($default-margin);
-    padding: $default-margin;
     margin-bottom: $default-margin;
-    line-height: normal;
     min-width: 15%;
   }
 }

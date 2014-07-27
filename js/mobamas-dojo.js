@@ -81,14 +81,15 @@ var MobamasDojo;
         lastTime: now
       };
 
+      // モバマスのメニュー
       for (var i = 0; i < this._configMobamasMenuItems.length; i++) {
         defaultValues[this._configMobamasMenuItems[i].configId] = false;
       }
-      defaultValues.showMobamasMenu = true;
-      defaultValues.showMenuMyPage = true;
-      defaultValues.showMenuGacha = true;
-      defaultValues.showMenuCardStr = true;
-      defaultValues.showMenuAuction = true;
+      defaultValues.showMobamasMenu = true;       // モバマスのメニュー
+      defaultValues.showMenuMyPage = true;        // ﾏｲｽﾀｼﾞｵ
+      defaultValues.showMenuCardList = true;      // ｱｲﾄﾞﾙ一覧
+      defaultValues.showMenuCardStorage = true;   // 女子寮
+      defaultValues.showMenuPRankingAward = true; // PRA
 
       this._config = new Config(
         defaultValues,
