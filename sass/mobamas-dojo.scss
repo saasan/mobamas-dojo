@@ -24,6 +24,12 @@ $info-bg:           #fcf8e3;
 $info-border-color: darken($info-bg, 8%);
 $info-border-width: 1px;
 
+$bottom-ad-height: 50px;
+
+body {
+  padding-bottom: $bottom-ad-height;
+}
+
 h3 {
   margin: 0;
   margin-bottom: $default-margin * 2;
@@ -148,18 +154,29 @@ img {
   @include box-shadow(0 0 15px rgba(0, 0, 0, 0.5));
 }
 
-#mobamasMenu {
+#buttons {
   margin-bottom: 0;
+}
+
+#mobamasMenu {
+  margin-top: 0;
   text-align: center;
 
   .mobamas-menu-item {
     @include border-radius($default-margin);
-    margin-bottom: $default-margin;
+    margin-top: $default-margin;
     min-width: 15%;
   }
 }
 
 #ad {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 0;
+  z-index: 5;
+
   .adsbygoogle {
     margin: 0 auto;
   }
@@ -287,7 +304,6 @@ $responsive-width1: 668px;
   }
 
   #mobamasMenu,
-  #ad,
   #config,
   #buttons,
   #dojos {
@@ -320,6 +336,7 @@ $responsive-width1: 668px;
     position: absolute;
     top: 0;
     left: 50%;
+    padding-bottom: $bottom-ad-height + $default-margin;
   }
 }
 
@@ -332,7 +349,6 @@ $responsive-width2: 800px;
   }
 
   #mobamasMenu,
-  #ad,
   #config,
   #buttons,
   #dojos {
@@ -365,5 +381,6 @@ $responsive-width2: 800px;
     position: absolute;
     top: 0;
     left: 50%;
+    padding-bottom: $bottom-ad-height + $default-margin;
   }
 }
