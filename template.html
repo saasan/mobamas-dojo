@@ -57,7 +57,7 @@
     <button type="button" class="close" data-target="#versionedInfo"><i class="icon-remove"></i></button>
     <h3>お知らせ</h3>
 
-    <h4>2014/07/28 変更点</h4>
+    <h4>2014/08/02 変更点</h4>
     <ul>
       <li>
         モバマスのメニューを追加。
@@ -65,7 +65,7 @@
         表示されない場合はブラウザで再読み込みを行って下さい。
       </li>
       <li>
-        広告の場所を移動。
+        広告周りの変更。
       </li>
     </ul>
 
@@ -252,8 +252,10 @@
   <script src="js/mobamas-dojo.js"></script>
   <script src="js/init.js"></script>
   <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-    (adsbygoogle = window.adsbygoogle || []).push({});
+    var i = document.getElementsByClassName('adsbygoogle').length;
+    while (i-- > 0) {
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    }
   </script>
 {%- else %}
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -268,8 +270,10 @@
     ga('create', 'UA-42938817-1', 'saasan.github.io');
     ga('send', 'pageview');
 
-    (adsbygoogle = window.adsbygoogle || []).push({});
-    (adsbygoogle = window.adsbygoogle || []).push({});
+    var i = document.getElementsByClassName('adsbygoogle').length;
+    while (i-- > 0) {
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    }
   </script>
 {%- endif %}
 </body>
