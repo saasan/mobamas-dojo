@@ -15,7 +15,7 @@ OUTPUT_RANK = 'index.html'
 OUTPUT_RANK_PATH = os.path.join(APP_PATH, OUTPUT_RANK)
 OUTPUT_LV = 'lv.html'
 OUTPUT_LV_PATH = os.path.join(APP_PATH, OUTPUT_LV)
-NUMBER_OF_DOJOS = 500
+NUMBER_OF_DOJOS = 1000
 
 class Dojo:
     def __init__(self, lv, rank, id, type, leader, defense):
