@@ -284,9 +284,10 @@ img {
       .defense {
         display: inline-block;
         position: absolute;
-        bottom: 0;
-        right: -$default-margin;
-        font-size: 300%;
+        bottom: -4px;
+        right: -4px;
+        font-size: 200%;
+        font-style: italic;
         color: rgba(255, 255, 255, 0.2);
         text-shadow: none;
       }
