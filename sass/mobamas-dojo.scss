@@ -275,6 +275,21 @@ img {
       font-weight: bold;
       overflow: hidden;
       white-space: nowrap;
+
+      .detail {
+        position: relative;
+        z-index: 1;
+      }
+
+      .defense {
+        display: inline-block;
+        position: absolute;
+        bottom: 0;
+        right: -$default-margin;
+        font-size: 300%;
+        color: rgba(255, 255, 255, 0.2);
+        text-shadow: none;
+      }
     }
 
     .hide-dojo {
