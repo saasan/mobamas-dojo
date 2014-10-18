@@ -71,8 +71,8 @@ print '---- unicode_csv_reader ----'
 
 reader = unicode_csv_reader(result)
 headers = reader.next()
-for unused, lv, rank, id, type, link, cheer, leader, defense, comment, no, lastUpdate, redundancy in reader:
-    if lv != '' and rank != '' and id != '':
+for unused, lv, rank, id, type, link, cheer, leader, defense, comment, no, lastUpdate, repeated in reader:
+    if lv != '' and rank != '' and id != '' and repeated != '重複':
         dojos.append(Dojo(int(lv), rank.replace('.', ''), id, type, leader, defense))
 
 print '---- dojos_rank ----'
